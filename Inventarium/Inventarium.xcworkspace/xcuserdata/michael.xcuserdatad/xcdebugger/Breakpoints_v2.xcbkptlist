@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/GroceryListTableViewController.swift"
-            timestampString = "508435427.997428"
+            timestampString = "508447308.957987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "GroceryListTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/GroceryListTableViewController.swift"
-            timestampString = "508435829.034917"
+            timestampString = "508447308.957987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "addButtonDidTouch(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -49,6 +49,70 @@
             endingLineNumber = "38"
             landmarkName = "init(snapshot:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inventarium/LoginViewController.swift"
+            timestampString = "508439448.427104"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "LoginViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inventarium/LoginViewController.swift"
+            timestampString = "508448994.481269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "loginDidTouch(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inventarium.LoginViewController.loginDidTouch (Swift.AnyObject) -&gt; ()"
+                  moduleName = "Inventarium"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michael/hacks/inventarium-ios/Inventarium/Inventarium/LoginViewController.swift"
+                  timestampString = "508448699.448535"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1374">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inventarium.LoginViewController.(loginDidTouch (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "Inventarium"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michael/hacks/inventarium-ios/Inventarium/Inventarium/LoginViewController.swift"
+                  timestampString = "508448699.449928"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		061A5F23C24030CA69EEA9ED /* Pods_Inventarium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */; };
 		4C50A0651E4E1705003C22A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */; };
+		4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50A0661E4E2010003C22A7 /* LoginViewController.swift */; };
 		4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */; };
 		4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */; };
 		4C93DAC71E4CFDFA00024E9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C93DAC51E4CFDFA00024E9E /* Main.storyboard */; };
@@ -43,6 +44,8 @@
 		16907D52D7190EAA9AC6CE16 /* Pods-InventariumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumUITests/Pods-InventariumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C89B77C690764F67873C9C5 /* Pods-InventariumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumTests/Pods-InventariumTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C50A0661E4E2010003C22A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4C50A0681E4E2AE0003C22A7 /* Inventarium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventarium.entitlements; sourceTree = "<group>"; };
 		4C93DABE1E4CFDFA00024E9E /* Inventarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		4C93DAC01E4CFDFA00024E9E /* Inventarium */ = {
 			isa = PBXGroup;
 			children = (
+				4C50A0681E4E2AE0003C22A7 /* Inventarium.entitlements */,
 				4C93DAEF1E4D0C3000024E9E /* Models */,
 				4C93DAF41E4D0CA800024E9E /* Controllers */,
 				4C93DAF51E4D0CB700024E9E /* Layouts */,
@@ -173,6 +177,7 @@
 		4C93DAF41E4D0CA800024E9E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C50A0661E4E2010003C22A7 /* LoginViewController.swift */,
 				4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */,
 			);
 			name = Controllers;
@@ -291,7 +296,13 @@
 				TargetAttributes = {
 					4C93DABD1E4CFDFA00024E9E = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = Q87CL5C7C4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					4C93DAD11E4CFDFA00024E9E = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -499,6 +510,7 @@
 				4C93DAF31E4D0C8000024E9E /* User.swift in Sources */,
 				4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */,
 				4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */,
+				4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */,
 				4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +664,8 @@
 			baseConfigurationReference = B931D4CF417051BC267F12E8 /* Pods-Inventarium.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Inventarium/Inventarium.entitlements;
+				DEVELOPMENT_TEAM = Q87CL5C7C4;
 				INFOPLIST_FILE = Inventarium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.inventariumapp.Inventarium;
@@ -665,6 +679,8 @@
 			baseConfigurationReference = A3604348612AA1A18B1AF93E /* Pods-Inventarium.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Inventarium/Inventarium.entitlements;
+				DEVELOPMENT_TEAM = Q87CL5C7C4;
 				INFOPLIST_FILE = Inventarium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.inventariumapp.Inventarium;

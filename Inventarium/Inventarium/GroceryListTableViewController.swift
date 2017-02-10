@@ -15,14 +15,11 @@ class GroceryListTableViewController: UITableViewController {
     var user: User!
     
     let ref = FIRDatabase.database().reference(withPath: "grocery-items")
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.allowsMultipleSelectionDuringEditing = false
-        
-        user = User(uid: "Fake", email: "mer95@case.edu")
         
         //.value listens for all types of changes to the data in your Firebase database—add, removed, and changed
         ref.observe(.value, with: { snapshot in
@@ -41,6 +38,12 @@ class GroceryListTableViewController: UITableViewController {
             self.items = newItems
             self.tableView.reloadData()
         })
+        
+        // If the user changed, set user var to the new user
+        FIRAuth.auth()!.addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+        }
         
     }
 
@@ -73,8 +76,10 @@ class GroceryListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            items.remove(at: indexPath.row)
-            tableView.reloadData()
+            // Get the item from the items list
+            let groceryItem = items[indexPath.row]
+            // Remove the item from firebase
+            groceryItem.ref?.removeValue()
         }
     }
     
