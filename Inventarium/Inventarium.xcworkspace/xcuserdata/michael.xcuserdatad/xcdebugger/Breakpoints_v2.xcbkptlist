@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/GroceryListTableViewController.swift"
-            timestampString = "508368465.246036"
+            timestampString = "508435427.997428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "GroceryListTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/GroceryListTableViewController.swift"
-            timestampString = "508368624.80739"
+            timestampString = "508435829.034917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "addButtonDidTouch(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Inventarium/GroceryItem.swift"
+            timestampString = "508435665.335191"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "init(snapshot:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

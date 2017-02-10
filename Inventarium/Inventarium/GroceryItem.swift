@@ -16,9 +16,11 @@ struct GroceryItem {
     let addedByUser: String
     let ref: FIRDatabaseReference?
     var completed: Bool
+    var count: Int
     
-    init(name: String, addedByUser: String, completed: Bool, key: String = "") {
+    init(name: String, addedByUser: String, completed: Bool, count: Int, key: String = "") {
         self.key = key
+        self.count = count
         self.name = name
         self.addedByUser = addedByUser
         self.completed = completed
@@ -29,6 +31,7 @@ struct GroceryItem {
         key = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String
+        count = snapshotValue["count"] as! Int
         addedByUser = snapshotValue["addedByUser"] as! String
         completed = snapshotValue["completed"] as! Bool
         ref = snapshot.ref
@@ -37,6 +40,7 @@ struct GroceryItem {
     func toAnyObject() -> Any {
         return [
             "name": name,
+            "count": count,
             "addedByUser": addedByUser,
             "completed": completed
         ]

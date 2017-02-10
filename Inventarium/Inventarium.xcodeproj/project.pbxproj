@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		061A5F23C24030CA69EEA9ED /* Pods_Inventarium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */; };
+		4C50A0651E4E1705003C22A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */; };
 		4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */; };
 		4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */; };
 		4C93DAC71E4CFDFA00024E9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C93DAC51E4CFDFA00024E9E /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		16907D52D7190EAA9AC6CE16 /* Pods-InventariumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumUITests/Pods-InventariumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C89B77C690764F67873C9C5 /* Pods-InventariumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumTests/Pods-InventariumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C93DABE1E4CFDFA00024E9E /* Inventarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		4C93DAB51E4CFDF900024E9E = {
 			isa = PBXGroup;
 			children = (
+				4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */,
 				4C93DAC01E4CFDFA00024E9E /* Inventarium */,
 				4C93DAD51E4CFDFA00024E9E /* InventariumTests */,
 				4C93DAE01E4CFDFA00024E9E /* InventariumUITests */,
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C93DACC1E4CFDFA00024E9E /* LaunchScreen.storyboard in Resources */,
+				4C50A0651E4E1705003C22A7 /* GoogleService-Info.plist in Resources */,
 				4C93DAC91E4CFDFA00024E9E /* Assets.xcassets in Resources */,
 				4C93DAC71E4CFDFA00024E9E /* Main.storyboard in Resources */,
 			);
@@ -746,6 +750,7 @@
 				4C93DAE81E4CFDFA00024E9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C93DAE91E4CFDFA00024E9E /* Build configuration list for PBXNativeTarget "InventariumTests" */ = {
 			isa = XCConfigurationList;
@@ -754,6 +759,7 @@
 				4C93DAEB1E4CFDFA00024E9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C93DAEC1E4CFDFA00024E9E /* Build configuration list for PBXNativeTarget "InventariumUITests" */ = {
 			isa = XCConfigurationList;
@@ -762,6 +768,7 @@
 				4C93DAEE1E4CFDFA00024E9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

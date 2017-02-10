@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class GroceryListTableViewController: UITableViewController {
     var items: [GroceryItem] = []
     
     var user: User!
+    
+    let ref = FIRDatabase.database().reference(withPath: "grocery-items")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +23,24 @@ class GroceryListTableViewController: UITableViewController {
         tableView.allowsMultipleSelectionDuringEditing = false
         
         user = User(uid: "Fake", email: "mer95@case.edu")
+        
+        //.value listens for all types of changes to the data in your Firebase database—add, removed, and changed
+        ref.observe(.value, with: { snapshot in
+            // Store the latest version of the data
+            var newItems: [GroceryItem] = []
+            
+            // Using children, loop through the grocery items.
+            for item in snapshot.children {
+                // Use second GroceryItem init that takes a FIRDataSnapshot
+                let groceryItem = GroceryItem(snapshot: item as! FIRDataSnapshot)
+                // Add items to local array
+                newItems.append(groceryItem)
+            }
+            
+            // Reassign items to the new items array
+            self.items = newItems
+            self.tableView.reloadData()
+        })
         
     }
 
@@ -38,7 +60,7 @@ class GroceryListTableViewController: UITableViewController {
         let groceryItem = items[indexPath.row]
         
         cell.textLabel?.text = groceryItem.name
-        cell.detailTextLabel?.text = groceryItem.addedByUser
+        cell.detailTextLabel?.text = String(groceryItem.count)
         
         toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
         
@@ -85,13 +107,21 @@ class GroceryListTableViewController: UITableViewController {
                                       preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { action in
-                                        let textField = alert.textFields![0]
-                                        let groceryItem = GroceryItem(name: textField.text!,
+                                       style: .default) { _ in
+                                        //Get the text field (and its text) from the alert controller.
+                                        guard let textField = alert.textFields?.first,
+                                            let text = textField.text else { return }
+                                        
+                                        //Using the current user’s data, create a new GroceryItem that is not completed by default.
+                                        let groceryItem = GroceryItem(name: text,
                                                                       addedByUser: self.user.email,
-                                                                      completed: false)
-                                        self.items.append(groceryItem)
-                                        self.tableView.reloadData()
+                                                                      completed: false,
+                                                                      count: 4)
+                                        //Create a child reference
+                                        let groceryItemRef = self.ref.child(text.lowercased())
+                                        
+                                        //Save data to the database.
+                                        groceryItemRef.setValue(groceryItem.toAnyObject())
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
