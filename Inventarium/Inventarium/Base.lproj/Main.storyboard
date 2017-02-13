@@ -48,6 +48,15 @@
                             <outlet property="delegate" destination="efB-d3-y82" id="Kpf-x5-wyW"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Take a note..." id="yph-b2-tG9"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nHH-rO-qYz"/>
+                        <barButtonItem tag="1" image="Barcode" id="iOU-pQ-Nxc">
+                            <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                        </barButtonItem>
+                        <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="4az-zF-tO9"/>
+                        <barButtonItem systemItem="camera" id="JJE-Ok-A0J"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Grocery List" id="ikZ-aS-RJB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gjg-Sx-QVa">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,7 +142,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ocW-O8-pKQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zUI-vf-xzd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zUI-vf-xzd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="YZa-PL-ybX">
@@ -141,6 +150,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1OE-AT-Cfb">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="efB-d3-y82" kind="relationship" relationship="rootViewController" id="Fj8-A6-b2h"/>
                     </connections>
@@ -150,4 +163,7 @@
             <point key="canvasLocation" x="479" y="107"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Barcode" width="25" height="25"/>
+    </resources>
 </document>
