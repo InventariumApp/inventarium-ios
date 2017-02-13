@@ -18,9 +18,14 @@ class TwoViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     weak var currentViewController: GroceryListTableViewController?
-
+    var shoppingListViewController: GroceryListTableViewController?
+    var pantryListViewController: GroceryListTableViewController?
+    
     override func viewDidLoad() {
-        self.currentViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA") as! GroceryListTableViewController?
+        self.shoppingListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA") as! GroceryListTableViewController?
+        self.pantryListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB") as! GroceryListTableViewController?
+        
+        self.currentViewController = shoppingListViewController
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(self.currentViewController!)
         self.addSubview(subView: self.currentViewController!.view, toView: self.containerView)
@@ -42,15 +47,15 @@ class TwoViewController: UIViewController {
     
     @IBAction func showComponent(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA")
+            let newViewController = self.shoppingListViewController
             newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
             self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController!)
-            self.currentViewController = newViewController as! GroceryListTableViewController?
+            self.currentViewController = newViewController
         } else {
-            let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB")
+            let newViewController = self.pantryListViewController
             newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
             self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController!)
-            self.currentViewController = newViewController as! GroceryListTableViewController?
+            self.currentViewController = newViewController
         }
     }
     
@@ -94,16 +99,21 @@ class TwoViewController: UIViewController {
                                         guard let textField = alert.textFields?.first,
                                             let text = textField.text else { return }
                                         
+                                        
                                         //Using the current user’s data, create a new GroceryItem that is not completed by default.
                                         let groceryItem = GroceryItem(name: text,
                                                                       addedByUser: self.user.email,
                                                                       completed: false,
                                                                       count: 4)
-                                        //Create a child reference
-                                        let groceryItemRef = self.ref.child(text.lowercased())
                                         
-                                        //Save data to the database.
-                                        groceryItemRef.setValue(groceryItem.toAnyObject())
+                                        if (self.currentViewController == self.shoppingListViewController) {
+                                            self.currentViewController!.addItemToList(list: "shopping", item: groceryItem)
+
+                                        } else {
+                                            self.currentViewController!.addItemToList(list: "pantry", item: groceryItem)
+                                        }
+                                        
+                                        
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",

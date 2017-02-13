@@ -97,4 +97,11 @@ class GroceryListTableViewController: UITableViewController {
         }
     }
     
+    public func addItemToList(list: String, item: GroceryItem) {
+        //Create a child reference
+        let groceryItemRef = self.ref.child(String(item.name).lowercased())
+        //Save data to the database.
+        groceryItemRef.setValue(item.toAnyObject())
+    }
+    
 }
