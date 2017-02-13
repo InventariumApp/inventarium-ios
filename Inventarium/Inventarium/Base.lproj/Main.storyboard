@@ -9,10 +9,66 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Two View Controller-->
+        <scene sceneID="1UI-Mz-Lyk">
+            <objects>
+                <viewController id="Ehb-YV-z1J" customClass="TwoViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nkO-hS-nMr"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ld-cA-8G9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="34p-CJ-57D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxs-Zy-ix3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Add an item..." id="gjg-Sx-QVa">
+                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addButtonDidTouch:" destination="Ehb-YV-z1J" id="TBX-W6-upN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nHH-rO-qYz"/>
+                        <barButtonItem tag="1" image="Barcode" id="iOU-pQ-Nxc">
+                            <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="4az-zF-tO9"/>
+                        <barButtonItem systemItem="camera" id="JJE-Ok-A0J">
+                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="ikZ-aS-RJB">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Xkd-Ce-Ucx">
+                            <rect key="frame" x="68" y="7" width="240" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Shopping List"/>
+                                <segment title="Pantry"/>
+                            </segments>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="kxs-Zy-ix3" id="30J-2Q-ZGV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2H-bZ-qlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1381.5999999999999" y="106.59670164917542"/>
+        </scene>
         <!--Grocery List-->
         <scene sceneID="aE3-zF-oR0">
             <objects>
-                <tableViewController title="Grocery List" id="efB-d3-y82" customClass="GroceryListTableViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ComponentA" title="Grocery List" id="efB-d3-y82" customClass="GroceryListTableViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="56G-Jl-Ga0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,39 +104,11 @@
                             <outlet property="delegate" destination="efB-d3-y82" id="Kpf-x5-wyW"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Add an item..." id="gjg-Sx-QVa">
-                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="efB-d3-y82" id="obF-Zh-swj"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nHH-rO-qYz"/>
-                        <barButtonItem tag="1" image="Barcode" id="iOU-pQ-Nxc">
-                            <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
-                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                        <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="4az-zF-tO9"/>
-                        <barButtonItem systemItem="camera" id="JJE-Ok-A0J">
-                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="ikZ-aS-RJB">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Xkd-Ce-Ucx">
-                            <rect key="frame" x="68" y="7" width="240" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Shopping List"/>
-                                <segment title="Pantry"/>
-                            </segments>
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </segmentedControl>
-                    </navigationItem>
+                    <toolbarItems/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIc-9R-gLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456.8" y="106.59670164917542"/>
+            <point key="canvasLocation" x="2278" y="-235"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="IKd-7C-zz5">
@@ -167,12 +195,85 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="efB-d3-y82" kind="relationship" relationship="rootViewController" id="Fj8-A6-b2h"/>
+                        <segue destination="Ehb-YV-z1J" kind="relationship" relationship="rootViewController" id="ZoE-6c-M50"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtJ-Da-0Pb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479" y="107"/>
+            <point key="canvasLocation" x="506" y="107"/>
+        </scene>
+        <!--Grocery List-->
+        <scene sceneID="AWf-na-uB0">
+            <objects>
+                <tableViewController storyboardIdentifier="ComponentB" title="Grocery List" id="u0Y-pq-Ff4" customClass="GroceryListTableViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="5iI-NO-y9e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="Jxq-II-wbf" detailTextLabel="03H-fs-Vp1" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ZT1-hP-hUK">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZT1-hP-hUK" id="zSX-Be-hTd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jxq-II-wbf">
+                                            <rect key="frame" x="15" y="9" width="35" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="03H-fs-Vp1">
+                                            <rect key="frame" x="15" y="34" width="42" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="u0Y-pq-Ff4" id="y5R-Vu-FiO"/>
+                            <outlet property="delegate" destination="u0Y-pq-Ff4" id="rbb-aV-nov"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Add an item..." id="fsm-g8-LkR">
+                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addButtonDidTouch:" destination="u0Y-pq-Ff4" id="iGt-de-htP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="39h-it-Uez"/>
+                        <barButtonItem tag="1" image="Barcode" id="555-jP-NR0">
+                            <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="ARp-aM-7rE"/>
+                        <barButtonItem systemItem="camera" id="YVT-Tv-ecU">
+                            <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="ksB-eo-pyR">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Ek1-cY-bVt">
+                            <rect key="frame" x="68" y="7" width="240" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Shopping List"/>
+                                <segment title="Pantry"/>
+                            </segments>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </segmentedControl>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gii-Cw-mHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="480"/>
         </scene>
     </scenes>
     <resources>
