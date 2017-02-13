@@ -18,12 +18,12 @@ class TwoViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     weak var currentViewController: GroceryListTableViewController?
-    var shoppingListViewController: GroceryListTableViewController?
-    var pantryListViewController: GroceryListTableViewController?
+    var shoppingListViewController: ShoppingListViewController?
+    var pantryListViewController: PantryListViewController?
     
     override func viewDidLoad() {
-        self.shoppingListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA") as! GroceryListTableViewController?
-        self.pantryListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB") as! GroceryListTableViewController?
+        self.shoppingListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA") as! ShoppingListViewController?
+        self.pantryListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB") as! PantryListViewController?
         
         self.currentViewController = shoppingListViewController
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
@@ -107,10 +107,10 @@ class TwoViewController: UIViewController {
                                                                       count: 4)
                                         
                                         if (self.currentViewController == self.shoppingListViewController) {
-                                            self.currentViewController!.addItemToList(list: "shopping", item: groceryItem)
+                                            self.shoppingListViewController!.addItemToList(list: "shopping", item: groceryItem)
 
                                         } else {
-                                            self.currentViewController!.addItemToList(list: "pantry", item: groceryItem)
+                                            self.pantryListViewController!.addItemToList(list: "pantry", item: groceryItem)
                                         }
                                         
                                         

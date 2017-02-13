@@ -11,6 +11,8 @@
 		4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05E3191E5172C2009CEF5D /* TwoViewController.swift */; };
 		4C50A0651E4E1705003C22A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */; };
 		4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50A0661E4E2010003C22A7 /* LoginViewController.swift */; };
+		4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */; };
+		4C5A92231E527867007F9BF6 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92221E527867007F9BF6 /* PantryListViewController.swift */; };
 		4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */; };
 		4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */; };
 		4C93DAC71E4CFDFA00024E9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C93DAC51E4CFDFA00024E9E /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C50A0661E4E2010003C22A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C50A0681E4E2AE0003C22A7 /* Inventarium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventarium.entitlements; sourceTree = "<group>"; };
+		4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
+		4C5A92221E527867007F9BF6 /* PantryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryListViewController.swift; sourceTree = "<group>"; };
 		4C93DABE1E4CFDFA00024E9E /* Inventarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListTableViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				4C05E3191E5172C2009CEF5D /* TwoViewController.swift */,
 				4C50A0661E4E2010003C22A7 /* LoginViewController.swift */,
 				4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */,
+				4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */,
+				4C5A92221E527867007F9BF6 /* PantryListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -512,7 +518,9 @@
 			files = (
 				4C93DAF31E4D0C8000024E9E /* User.swift in Sources */,
 				4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */,
+				4C5A92231E527867007F9BF6 /* PantryListViewController.swift in Sources */,
 				4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */,
+				4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */,
 				4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */,
 				4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */,
 				4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */,

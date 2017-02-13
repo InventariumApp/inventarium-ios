@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" id="ikZ-aS-RJB">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Xkd-Ce-Ucx">
-                            <rect key="frame" x="67.5" y="6.5" width="240" height="31"/>
+                            <rect key="frame" x="68" y="7" width="240" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Shopping List"/>
@@ -71,7 +71,7 @@
         <!--Grocery List-->
         <scene sceneID="aE3-zF-oR0">
             <objects>
-                <tableViewController storyboardIdentifier="ComponentA" title="Grocery List" id="efB-d3-y82" customClass="GroceryListTableViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ComponentA" title="Grocery List" id="efB-d3-y82" customClass="ShoppingListViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="56G-Jl-Ga0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,7 +210,7 @@
         <!--Grocery List-->
         <scene sceneID="AWf-na-uB0">
             <objects>
-                <tableViewController storyboardIdentifier="ComponentB" title="Grocery List" id="u0Y-pq-Ff4" customClass="GroceryListTableViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ComponentB" title="Grocery List" id="u0Y-pq-Ff4" customClass="PantryListViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="5iI-NO-y9e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
