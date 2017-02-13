@@ -49,7 +49,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Take a note..." id="yph-b2-tG9"/>
+                        <barButtonItem title="Add an item..." id="gjg-Sx-QVa">
+                            <connections>
+                                <action selector="addButtonDidTouch:" destination="efB-d3-y82" id="obF-Zh-swj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="nHH-rO-qYz"/>
                         <barButtonItem tag="1" image="Barcode" id="iOU-pQ-Nxc">
                             <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
@@ -57,14 +61,7 @@
                         <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="4az-zF-tO9"/>
                         <barButtonItem systemItem="camera" id="JJE-Ok-A0J"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Grocery List" id="ikZ-aS-RJB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gjg-Sx-QVa">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="addButtonDidTouch:" destination="efB-d3-y82" id="obF-Zh-swj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Grocery List" id="ikZ-aS-RJB"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIc-9R-gLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
