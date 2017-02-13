@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+// Some Help: https://spin.atomicobject.com/2015/10/13/switching-child-view-controllers-ios-auto-layout/
 class TwoViewController: UIViewController {
     var user: User!
     
@@ -24,6 +25,8 @@ class TwoViewController: UIViewController {
         self.addChildViewController(self.currentViewController!)
         self.addSubview(subView: self.currentViewController!.view, toView: self.containerView)
         super.viewDidLoad()
+        currentViewController?.willMove(toParentViewController: nil)
+        currentViewController?.removeFromParentViewController()
         // If the user changed, set user var to the new user
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
@@ -35,6 +38,37 @@ class TwoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func showComponent(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA")
+            newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+            self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController!)
+            self.currentViewController = newViewController as! GroceryListTableViewController?
+        } else {
+            let newViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB")
+            newViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+            self.cycleFromViewController(oldViewController: self.currentViewController!, toViewController: newViewController!)
+            self.currentViewController = newViewController as! GroceryListTableViewController?
+        }
+    }
+    
+    func cycleFromViewController(oldViewController: UIViewController, toViewController newViewController: UIViewController) {
+        oldViewController.willMove(toParentViewController: nil)
+        self.addChildViewController(newViewController)
+        self.addSubview(subView: newViewController.view, toView:self.containerView!)
+        newViewController.view.alpha = 0
+        newViewController.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5, animations: {
+            newViewController.view.alpha = 1
+            oldViewController.view.alpha = 0
+        },
+                                   completion: { finished in
+                                    oldViewController.view.removeFromSuperview()
+                                    oldViewController.removeFromParentViewController()
+                                    newViewController.didMove(toParentViewController: self)
+        })
     }
     
     func addSubview(subView:UIView, toView parentView:UIView) {
