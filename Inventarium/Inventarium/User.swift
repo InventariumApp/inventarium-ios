@@ -16,12 +16,12 @@ struct User {
     
     init(authData: FIRUser) {
         uid = authData.uid
-        email = authData.email!
+        email = authData.email!.replacingOccurrences(of: ".", with: ",", options: .literal, range: nil)
     }
     
     init(uid: String, email: String) {
         self.uid = uid
-        self.email = email
+        self.email = email.replacingOccurrences(of: ".", with: ",", options: .literal, range: nil)
     }
     
 }

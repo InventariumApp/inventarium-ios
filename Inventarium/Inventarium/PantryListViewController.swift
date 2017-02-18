@@ -11,11 +11,13 @@ import Firebase
 
 class PantryListViewController: GroceryListTableViewController {
     var items: [GroceryItem] = []
-    
-    let ref = FIRDatabase.database().reference(withPath: "shopping-items")
+    var currentUser:User!
+
+    var ref:FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = FIRDatabase.database().reference(withPath: "lists/\(currentUser!.email)/pantry-list")
         tableView.allowsMultipleSelectionDuringEditing = false
         
         //.value listens for all types of changes to the data in your Firebase database—add, removed, and changed
@@ -104,9 +106,12 @@ class PantryListViewController: GroceryListTableViewController {
     }
     
     public func addItemToList(list: String, item: GroceryItem) {
+        let listPath:String = "lists/\(currentUser.email)/pantry-list"
+        let ref = FIRDatabase.database().reference(withPath: listPath)
         //Create a child reference
-        let groceryItemRef = self.ref.child(String(item.name).lowercased())
+        let groceryItemRef = ref.child(String(item.name).lowercased())
         //Save data to the database.
         groceryItemRef.setValue(item.toAnyObject())
     }
 }
+

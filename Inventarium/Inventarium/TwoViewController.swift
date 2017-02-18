@@ -22,22 +22,21 @@ class TwoViewController: UIViewController {
     var pantryListViewController: PantryListViewController?
     
     override func viewDidLoad() {
-        self.shoppingListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA") as! ShoppingListViewController?
-        self.pantryListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB") as! PantryListViewController?
-        
-        self.currentViewController = shoppingListViewController
-        self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
-        self.addChildViewController(self.currentViewController!)
-        self.addSubview(subView: self.currentViewController!.view, toView: self.containerView)
-        super.viewDidLoad()
-        currentViewController?.willMove(toParentViewController: nil)
-        currentViewController?.removeFromParentViewController()
         // If the user changed, set user var to the new user
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             self.user = User(authData: user)
-        }
-        
+            self.shoppingListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentA") as! ShoppingListViewController?
+            self.pantryListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB") as! PantryListViewController?
+            self.shoppingListViewController?.currentUser = self.user
+            self.pantryListViewController?.currentUser = self.user
+            self.currentViewController = self.shoppingListViewController
+            self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+            self.addChildViewController(self.currentViewController!)
+            self.addSubview(subView: self.currentViewController!.view, toView: self.containerView)
+            super.viewDidLoad()
+            self.currentViewController?.willMove(toParentViewController: nil)
+            self.currentViewController?.removeFromParentViewController()        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,8 +88,15 @@ class TwoViewController: UIViewController {
     
     // MARK: Add Item
     @IBAction func addButtonDidTouch(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Grocery Item",
-                                      message: "Add an Item",
+        var alertMessage:String
+        if (self.currentViewController == self.shoppingListViewController) {
+            alertMessage = "Add an Item to Shopping List"
+        } else {
+            alertMessage = "Add an Item to Pantry List"
+        }
+        
+        let alert = UIAlertController(title: "Add Item",
+                                      message: alertMessage,
                                       preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save",
@@ -132,10 +138,17 @@ class TwoViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destinationViewController.
+//        // Pass the selected object to the new view controller.
+//        if (segue.identifier == "segueTest") {
+//            //Checking identifier is crucial as there might be multiple
+//            // segues attached to same view
+//            var detailVC = segue!.destinationViewController as DetailViewController;
+//            detailVC.toPass = textField.text
+//        }
+//    }
+ 
 
 }

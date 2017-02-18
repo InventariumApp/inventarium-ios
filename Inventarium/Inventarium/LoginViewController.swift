@@ -103,6 +103,12 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        textFieldLoginEmail.leftViewMode = UITextFieldViewMode.always
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(named: "mail_icon")
+        imageView.image = image
+        textFieldLoginEmail.leftView = imageView
         FIRAuth.auth()!.addStateDidChangeListener() { auth, user in
             // If the user is signed in
             if user != nil {
