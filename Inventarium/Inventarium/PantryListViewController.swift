@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import MGSwipeTableCell
 
-class PantryListViewController: GroceryListTableViewController {
+class PantryListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate {
     var items: [GroceryItem] = []
     var currentUser:User!
 

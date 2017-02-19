@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MGSwipeTableCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Inventarium.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D45723C05B8EA36DD03CF0A12C594EE</key>
+		<key>1CD80321715FDB12A3A31B7BCB09EA28</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2837D3A8D2B6783C0EBFAC5E6D7C7179</key>
 		<dict>
 			<key>primary</key>
 			<true/>

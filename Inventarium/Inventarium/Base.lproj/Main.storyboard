@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" id="ikZ-aS-RJB">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Xkd-Ce-Ucx">
-                            <rect key="frame" x="68" y="7" width="240" height="31"/>
+                            <rect key="frame" x="67.5" y="6.5" width="240" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Shopping List"/>
@@ -77,11 +77,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="21p-KL-CIH" detailTextLabel="aG0-SQ-Nib" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ghW-Pg-PlP">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="21p-KL-CIH" detailTextLabel="aG0-SQ-Nib" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ghW-Pg-PlP" customClass="MGSwipeTableCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ghW-Pg-PlP" id="WvO-b9-Fki">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="21p-KL-CIH">
@@ -100,6 +100,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="cell"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -110,6 +111,9 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="559"/>
+                    <connections>
+                        <outlet property="tableView" destination="56G-Jl-Ga0" id="gfq-Vh-le9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIc-9R-gLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,11 +230,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="Jxq-II-wbf" detailTextLabel="03H-fs-Vp1" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ZT1-hP-hUK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="Jxq-II-wbf" detailTextLabel="03H-fs-Vp1" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="ZT1-hP-hUK" customClass="MGSwipeTableCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZT1-hP-hUK" id="zSX-Be-hTd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jxq-II-wbf">
@@ -249,6 +253,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="cell"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

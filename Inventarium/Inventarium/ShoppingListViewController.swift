@@ -8,17 +8,20 @@
 
 import UIKit
 import Firebase
+import MGSwipeTableCell
 
-class ShoppingListViewController: GroceryListTableViewController {
+class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate {
     var items: [GroceryItem] = []
     var currentUser:User!
-    
+
     //let ref = FIRDatabase.database().reference(withPath: "shopping-items")
     // NEED AN INIT THAT PROVIDES USER AND THEN ADDS EMAIL TO THE REF
     var ref:FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
+
         ref = FIRDatabase.database().reference(withPath: "lists/\(currentUser!.email)/shopping-list")
         tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -61,13 +64,26 @@ class ShoppingListViewController: GroceryListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let reuseIdentifier = "ItemCell"
         let groceryItem = items[indexPath.row]
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
         
-        cell.textLabel?.text = groceryItem.name
-        cell.detailTextLabel?.text = String(groceryItem.count)
+        cell.textLabel!.text = groceryItem.name
+        cell.detailTextLabel!.text = String(groceryItem.count)
+        cell.delegate = self //optional
         
-        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
+        //configure left buttons
+        cell.leftButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red),
+                             MGSwipeButton(title: "More",backgroundColor: .lightGray)]
+        cell.leftSwipeSettings.transition = .drag
+//        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"check.png"), backgroundColor: .green),
+//                            MGSwipeButton(title: "", icon: UIImage(named:"fav.png"), backgroundColor: .blue)]
+//        cell.leftSwipeSettings.transition = .drag
+//        
+        //configure right buttons
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red),
+                             MGSwipeButton(title: "More",backgroundColor: .lightGray)]
+        cell.rightSwipeSettings.transition = .drag
         
         return cell
     }
