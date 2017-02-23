@@ -60,13 +60,37 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let reuseIdentifier = "ItemCell"
         let groceryItem = items[indexPath.row]
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
         
-        cell.textLabel?.text = groceryItem.name
-        cell.detailTextLabel?.text = String(groceryItem.count)
+        cell.textLabel!.text = groceryItem.name
+        cell.detailTextLabel!.text = String(groceryItem.count)
+        cell.delegate = self //optional
         
-        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
+        //configure left buttons
+        cell.leftButtons = [MGSwipeButton(title: "Move To Shopping List", backgroundColor: .green, callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            self.onMoveToShoppingClicked(indexPath)
+            return true
+        })]
+        
+        cell.leftSwipeSettings.transition = .drag
+        cell.leftExpansion.fillOnTrigger = true
+        cell.leftExpansion.buttonIndex = 0
+        cell.leftExpansion.threshold = 1.5
+        
+        //configure right buttons
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red, callback: {
+            (sender: MGSwipeTableCell!) -> Bool in
+            self.onDeleteClicked(indexPath)
+            return true
+        })]
+        
+        cell.rightSwipeSettings.transition = .drag
+        cell.rightExpansion.fillOnTrigger = true
+        cell.rightExpansion.buttonIndex = 0
+        cell.rightExpansion.threshold = 1.5
         
         return cell
     }
@@ -84,14 +108,32 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        var groceryItem = items[indexPath.row]
-        let toggledCompletion = !groceryItem.completed
-        
-        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        groceryItem.completed = toggledCompletion
-        tableView.reloadData()
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+//        var groceryItem = items[indexPath.row]
+//        let toggledCompletion = !groceryItem.completed
+//        
+//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
+//        groceryItem.completed = toggledCompletion
+//        tableView.reloadData()
+//    }
+    
+    func onDeleteClicked(_ index: IndexPath) {
+        // Get the item from the items list
+        //var x =  self.tableView.indexPath(for: sender)
+        let groceryItem = items[index.row]
+        // Remove the item from firebase
+        groceryItem.ref?.removeValue()
+    }
+    
+    func onMoveToShoppingClicked(_ index: IndexPath) {
+        let groceryItem = items[index.row]
+        // Remove the item from firebase
+        let listPath:String = "lists/\(currentUser.email)/shopping-list"
+        let ref = FIRDatabase.database().reference(withPath: listPath)
+        let groceryItemRef = ref.child(String(groceryItem.name).lowercased())
+        groceryItemRef.setValue(groceryItem.toAnyObject())
+        groceryItem.ref?.removeValue()
     }
     
     func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
