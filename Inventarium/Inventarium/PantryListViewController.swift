@@ -122,8 +122,8 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         let listPath:String = "lists/\(currentUser.email)/shopping-list"
         let ref = FIRDatabase.database().reference(withPath: listPath)
         let groceryItemRef = ref.child(String(groceryItem.name).lowercased())
-        groceryItemRef.setValue(groceryItem.toAnyObject())
         groceryItem.ref?.removeValue()
+        groceryItemRef.setValue(groceryItem.toAnyObject())
     }
     
     
@@ -134,6 +134,18 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         let groceryItemRef = ref.child(String(item.name).lowercased())
         //Save data to the database.
         groceryItemRef.setValue(item.toAnyObject())
+    }
+    
+    // Attempting to fix the UITableViewWrapperView issue (list being offset)
+    func fixTableViewInsets() {
+        let zContentInsets = UIEdgeInsets.zero
+        tableView.contentInset = zContentInsets
+        tableView.scrollIndicatorInsets = zContentInsets
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        fixTableViewInsets()
     }
 }
 

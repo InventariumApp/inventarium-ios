@@ -17,6 +17,7 @@ class NewItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        countTextField.text = "1"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
