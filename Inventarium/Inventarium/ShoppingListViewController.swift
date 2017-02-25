@@ -111,17 +111,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             groceryItem.ref?.removeValue()
         }
     }
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-//        var groceryItem = items[indexPath.row]
-//        let toggledCompletion = !groceryItem.completed
-//        
-//        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-//        groceryItem.completed = toggledCompletion
-//        tableView.reloadData()
-//    }
-    
+
     func onDeleteClicked(_ index: IndexPath) {
         // Get the item from the items list
         let groceryItem = items[index.row]
@@ -138,18 +128,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         groceryItemRef.setValue(groceryItem.toAnyObject())
         groceryItem.ref?.removeValue()
     }
-    
-    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-        if !isCompleted {
-            cell.accessoryType = .none
-            cell.textLabel?.textColor = UIColor.black
-            cell.detailTextLabel?.textColor = UIColor.black
-        } else {
-            cell.accessoryType = .checkmark
-            cell.textLabel?.textColor = UIColor.gray
-            cell.detailTextLabel?.textColor = UIColor.gray
-        }
-    }
+
     
     public func addItemToList(list: String, item: GroceryItem) {
         let listPath:String = "lists/\(currentUser.email)/shopping-list"

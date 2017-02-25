@@ -86,51 +86,69 @@ class TwoViewController: UIViewController {
                                                                                  options: [], metrics: nil, views: viewBindingsDict))
     }
     
-    // MARK: Add Item
-    @IBAction func addButtonDidTouch(_ sender: UIBarButtonItem) {
-        var alertMessage:String
-        if (self.currentViewController == self.shoppingListViewController) {
-            alertMessage = "Add an Item to Shopping List"
-        } else {
-            alertMessage = "Add an Item to Pantry List"
+//    // MARK: Add Item
+//    @IBAction func addButtonDidTouch(_ sender: UIBarButtonItem) {
+//        var alertMessage:String
+//        if (self.currentViewController == self.shoppingListViewController) {
+//            alertMessage = "Add an Item to Shopping List"
+//        } else {
+//            alertMessage = "Add an Item to Pantry List"
+//        }
+//        
+//        let alert = UIAlertController(title: "Add Item",
+//                                      message: alertMessage,
+//                                      preferredStyle: .alert)
+//        
+//        let saveAction = UIAlertAction(title: "Save",
+//                                       style: .default) { _ in
+//                                        //Get the text field (and its text) from the alert controller.
+//                                        guard let textField = alert.textFields?.first,
+//                                            let text = textField.text else { return }
+//                                        
+//                                        
+//                                        //Using the current user’s data, create a new GroceryItem that is not completed by default.
+//                                        let groceryItem = GroceryItem(name: text,
+//                                                                      addedByUser: self.user.email,
+//                                                                      count: 4)
+//                                        
+//                                        if (self.currentViewController == self.shoppingListViewController) {
+//                                            self.shoppingListViewController!.addItemToList(list: "shopping", item: groceryItem)
+//
+//                                        } else {
+//                                            self.pantryListViewController!.addItemToList(list: "pantry", item: groceryItem)
+//                                        }
+//                                        
+//                                        
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel",
+//                                         style: .default)
+//        
+//        alert.addTextField()
+//        
+//        alert.addAction(saveAction)
+//        alert.addAction(cancelAction)
+//        
+//        present(alert, animated: true, completion: nil)
+//    }
+    
+    @IBAction func cancelToTwoViewController(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func saveNewItem(segue:UIStoryboardSegue) {
+        if let newItemTableviewController = segue.source as? NewItemTableViewController {
+            if let item = newItemTableviewController.item {
+                let newItem = GroceryItem(name: item.name, addedByUser: self.user.email, count: item.count)
+                
+                if (self.currentViewController == self.shoppingListViewController) {
+                    self.shoppingListViewController!.addItemToList(list: "shopping", item: newItem)
+                    
+                } else {
+                    self.pantryListViewController!.addItemToList(list: "pantry", item: newItem)
+                }
+            }
         }
-        
-        let alert = UIAlertController(title: "Add Item",
-                                      message: alertMessage,
-                                      preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { _ in
-                                        //Get the text field (and its text) from the alert controller.
-                                        guard let textField = alert.textFields?.first,
-                                            let text = textField.text else { return }
-                                        
-                                        
-                                        //Using the current user’s data, create a new GroceryItem that is not completed by default.
-                                        let groceryItem = GroceryItem(name: text,
-                                                                      addedByUser: self.user.email,
-                                                                      completed: false,
-                                                                      count: 4)
-                                        
-                                        if (self.currentViewController == self.shoppingListViewController) {
-                                            self.shoppingListViewController!.addItemToList(list: "shopping", item: groceryItem)
-
-                                        } else {
-                                            self.pantryListViewController!.addItemToList(list: "pantry", item: groceryItem)
-                                        }
-                                        
-                                        
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .default)
-        
-        alert.addTextField()
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
     }
     
 
