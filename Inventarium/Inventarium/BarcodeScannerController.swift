@@ -14,7 +14,8 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var barcodeFrameView:UIView?
-    
+    var barcodenum:String? = nil
+
     @IBOutlet weak var topbar: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     
@@ -24,7 +25,6 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
         super.viewDidLoad()
         // Get instance of AVCaptureDevice class to initialize a device object
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
@@ -76,13 +76,67 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
     
+    func lookupBarcode(barcode:String, completion: @escaping (_ result : String?)->()) {
+        //let barcode = "0008817013220" // TODO: REMOVE!
+        let barcodeEndpoint: String = "http://159.203.166.121:8080/product_name?barcode=\(barcode)"
+        guard let url = URL(string: barcodeEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        let urlRequest = URLRequest(url: url)
+        
+        let session = URLSession.shared
+
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling GET on /todos/1")
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let todo = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                // now we have the todo
+                // let's just print it to prove we can access it
+                
+                guard let productName = todo["gtin_nm"] as? String else {
+                    print("Could not get product name from JSON")
+                    return
+                }
+                
+                completion(productName)
+                
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+        // gtin_nm
+    }
+    
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             barcodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No barcode is detected"
             return
+        }
+        
+        if barcodenum == nil {
+            messageLabel.text = "No barcode is detected"
         }
         
         // Get the metadata object.
@@ -94,10 +148,20 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
             barcodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                messageLabel.text = metadataObj.stringValue
+                if barcodenum != metadataObj.stringValue {
+                    self.messageLabel.text = "Barcode Detected"
+                    lookupBarcode(barcode: metadataObj.stringValue) { product  in
+                        if let product = product {
+                            print(product)
+                            
+                        }
+                    }
+                    barcodenum = metadataObj.stringValue
+                }
             }
         }
     }
+    
 
     /*
     // MARK: - Navigation
