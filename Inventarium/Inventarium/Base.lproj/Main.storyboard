@@ -206,7 +206,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gma-8K-JsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="y8h-ew-KGf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1348" y="965"/>
+            <point key="canvasLocation" x="1313" y="993"/>
         </scene>
         <!--Grocery List-->
         <scene sceneID="aE3-zF-oR0">
@@ -482,6 +482,6 @@
         <image name="Barcode" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7KC-Po-szq"/>
+        <segue reference="hkA-3p-Sg7"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -117,7 +117,15 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                     return
                 }
                 
-                completion(productName)
+                var result:String = ""
+                
+                if let productBrand = todo["brand_nm"] as? String {
+                    result = "\(productBrand) \(productName)"
+                } else {
+                    result = productName
+                }
+                
+                completion(result)
                 
             } catch  {
                 print("error trying to convert data to JSON")
@@ -167,7 +175,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "barcodeToAddItemSegue" {
             let navigationViewController = (segue.destination as! UINavigationController)
-            let newItemTableViewController = navigationViewController.childViewControllers[0] as! NewItemTableViewController
+            let newItemTableViewController = navigationViewController.topViewController as! NewItemTableViewController
             print("%@$## \(self.product)")
             newItemTableViewController.prefilledItemName = self.product!
             navigationViewController.view.tintColor = UIColor.black
