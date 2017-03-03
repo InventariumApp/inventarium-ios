@@ -15,6 +15,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var barcodeFrameView:UIView?
     var barcodenum:String? = nil
+    var product:String? = nil
 
     @IBOutlet weak var topbar: UIView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -153,12 +154,23 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                     lookupBarcode(barcode: metadataObj.stringValue) { product  in
                         if let product = product {
                             print(product)
-                            
+                            self.product = product
+                            self.performSegue(withIdentifier: "barcodeToAddItemSegue", sender: nil)
                         }
                     }
                     barcodenum = metadataObj.stringValue
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "barcodeToAddItemSegue" {
+            let navigationViewController = (segue.destination as! UINavigationController)
+            let newItemTableViewController = navigationViewController.childViewControllers[0] as! NewItemTableViewController
+            print("%@$## \(self.product)")
+            newItemTableViewController.prefilledItemName = self.product!
+            navigationViewController.view.tintColor = UIColor.black
         }
     }
     

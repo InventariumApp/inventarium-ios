@@ -14,10 +14,14 @@ class NewItemTableViewController: UITableViewController {
     @IBOutlet weak var countTextField: UITextField!
     
     var item:GroceryItem?
+    var prefilledItemName:String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         countTextField.text = "1"
+        if (prefilledItemName != nil) {
+            itemNameTextField.text = prefilledItemName
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

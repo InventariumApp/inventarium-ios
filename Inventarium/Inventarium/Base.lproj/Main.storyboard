@@ -59,12 +59,13 @@
                     <connections>
                         <outlet property="messageLabel" destination="Ps0-bt-zRi" id="x7R-md-q2c"/>
                         <outlet property="topbar" destination="wcR-qU-guD" id="vXv-cL-Les"/>
+                        <segue destination="ZcQ-Zd-Rox" kind="presentation" identifier="barcodeToAddItemSegue" id="hkA-3p-Sg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5RC-t9-HOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Yzp-7i-8PR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1404" y="-730.88455772113946"/>
+            <point key="canvasLocation" x="-532" y="993"/>
         </scene>
         <!--Two View Controller-->
         <scene sceneID="1UI-Mz-Lyk">
@@ -205,7 +206,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gma-8K-JsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="y8h-ew-KGf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="630" y="923"/>
+            <point key="canvasLocation" x="1348" y="965"/>
         </scene>
         <!--Grocery List-->
         <scene sceneID="aE3-zF-oR0">
@@ -441,11 +442,16 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZcQ-Zd-Rox" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="8qP-6m-jrA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jmu-5C-c6Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="EA3-gx-2zU">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="b9g-Ek-QWD" kind="relationship" relationship="rootViewController" id="QZg-ZK-SF6"/>
                     </connections>
@@ -469,10 +475,13 @@
                     </tableViewCellContentView>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="-153" y="924"/>
+            <point key="canvasLocation" x="417" y="993"/>
         </scene>
     </scenes>
     <resources>
         <image name="Barcode" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7KC-Po-szq"/>
+    </inferredMetricsTieBreakers>
 </document>
