@@ -36,7 +36,9 @@ class TwoViewController: UIViewController {
             self.addSubview(subView: self.currentViewController!.view, toView: self.containerView)
             super.viewDidLoad()
             self.currentViewController?.willMove(toParentViewController: nil)
-            self.currentViewController?.removeFromParentViewController()        }
+            self.currentViewController?.removeFromParentViewController()
+        }
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,6 +91,11 @@ class TwoViewController: UIViewController {
     
     @IBAction func cancelToTwoViewController(segue:UIStoryboardSegue) {
         
+    }
+    
+    @IBAction func backFromSettingsLogoutSegue(segue:UIStoryboardSegue) {
+        print("Attempting to segue from main to logout")
+        performSegue(withIdentifier: "unwindToLogin", sender: nil)
     }
     
     @IBAction func saveNewItem(segue:UIStoryboardSegue) {

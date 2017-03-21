@@ -14,6 +14,7 @@
 		4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */; };
 		4C5A92231E527867007F9BF6 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92221E527867007F9BF6 /* PantryListViewController.swift */; };
 		4C6FC0E11E611506008A9705 /* NewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC0E01E611506008A9705 /* NewItemTableViewController.swift */; };
+		4C72A79B1E8195FF0071D770 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */; };
 		4C8257951E68CBB7005D119E /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */; };
 		4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */; };
 		4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */; };
@@ -55,6 +56,7 @@
 		4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		4C5A92221E527867007F9BF6 /* PantryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryListViewController.swift; sourceTree = "<group>"; };
 		4C6FC0E01E611506008A9705 /* NewItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTableViewController.swift; sourceTree = "<group>"; };
+		4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerController.swift; sourceTree = "<group>"; };
 		4C93DABE1E4CFDFA00024E9E /* Inventarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C93DAC11E4CFDFA00024E9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */,
 				4C5A92221E527867007F9BF6 /* PantryListViewController.swift */,
 				4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */,
+				4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 			files = (
 				4C93DAF31E4D0C8000024E9E /* User.swift in Sources */,
 				4C93DAC41E4CFDFA00024E9E /* GroceryListTableViewController.swift in Sources */,
+				4C72A79B1E8195FF0071D770 /* SettingsViewController.swift in Sources */,
 				4C5A92231E527867007F9BF6 /* PantryListViewController.swift in Sources */,
 				4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */,
 				4C6FC0E11E611506008A9705 /* NewItemTableViewController.swift in Sources */,

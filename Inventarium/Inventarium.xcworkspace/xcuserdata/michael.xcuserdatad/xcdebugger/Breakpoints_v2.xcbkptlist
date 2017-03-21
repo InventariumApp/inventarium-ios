@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/TwoViewController.swift"
-            timestampString = "509143091.145371"
+            timestampString = "511808819.994332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "showComponent(sender:)"
             landmarkType = "7">
          </BreakpointContent>

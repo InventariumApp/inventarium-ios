@@ -118,6 +118,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func backFromMainToLogin(segue:UIStoryboardSegue) {
+
+    }
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {
