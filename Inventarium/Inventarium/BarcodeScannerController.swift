@@ -112,20 +112,20 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                 // now we have the todo
                 // let's just print it to prove we can access it
                 
-                guard let productName = todo["gtin_nm"] as? String else {
+                guard let productName = todo["clean_nm"] as? String else {
                     print("Could not get product name from JSON")
                     return
                 }
                 
-                var result:String = ""
+//                var result:String = ""
+//                
+//                if let productBrand = todo["brand_nm"] as? String {
+//                    result = "\(productBrand) \(productName)"
+//                } else {
+//                    result = productName
+//                }
                 
-                if let productBrand = todo["brand_nm"] as? String {
-                    result = "\(productBrand) \(productName)"
-                } else {
-                    result = productName
-                }
-                
-                completion(result)
+                completion(productName)
                 
             } catch  {
                 print("error trying to convert data to JSON")
@@ -162,8 +162,10 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                     lookupBarcode(barcode: metadataObj.stringValue) { product  in
                         if let product = product {
                             print(product)
-                            self.product = product
-                            self.performSegue(withIdentifier: "barcodeToAddItemSegue", sender: nil)
+                            DispatchQueue.main.async {
+                                self.product = product
+                                self.performSegue(withIdentifier: "barcodeToAddItemSegue", sender: self)
+                            }
                         }
                     }
                     barcodenum = metadataObj.stringValue

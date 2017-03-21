@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Barcode Scanner Controller-->
+        <!--Scan Barcode-->
         <scene sceneID="u7w-Dv-u0X">
             <objects>
                 <viewController id="jdV-t7-t00" customClass="BarcodeScannerController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,16 +33,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXp-l1-Xzy">
-                                        <rect key="frame" x="19" y="22" width="56" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Yzp-7i-8PR" kind="unwind" unwindAction="cancelToTwoViewControllerWithSegue:" id="ffA-wC-xtr"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scan Barcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQN-RB-gnB">
                                         <rect key="frame" x="113" y="22" width="148" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -56,16 +46,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Scan Barcode" id="uT7-oL-sEj">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="KQ6-iq-CnB">
+                            <connections>
+                                <segue destination="Yzp-7i-8PR" kind="unwind" unwindAction="cancelToTwoViewControllerWithSegue:" id="sMy-Gr-15Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageLabel" destination="Ps0-bt-zRi" id="x7R-md-q2c"/>
                         <outlet property="topbar" destination="wcR-qU-guD" id="vXv-cL-Les"/>
-                        <segue destination="ZcQ-Zd-Rox" kind="presentation" identifier="barcodeToAddItemSegue" id="hkA-3p-Sg7"/>
+                        <segue destination="ZcQ-Zd-Rox" kind="presentation" identifier="barcodeToAddItemSegue" id="cd8-8D-8oO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5RC-t9-HOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Yzp-7i-8PR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="993"/>
+            <point key="canvasLocation" x="505" y="993"/>
         </scene>
         <!--Two View Controller-->
         <scene sceneID="1UI-Mz-Lyk">
@@ -98,7 +95,7 @@
                             <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                             <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="jdV-t7-t00" kind="showDetail" id="Yqj-i5-mpQ"/>
+                                <segue destination="c1b-Hk-1NQ" kind="presentation" id="Yqj-i5-mpQ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="4az-zF-tO9"/>
@@ -109,7 +106,7 @@
                     <navigationItem key="navigationItem" id="ikZ-aS-RJB">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Xkd-Ce-Ucx">
-                            <rect key="frame" x="68" y="7" width="240" height="31"/>
+                            <rect key="frame" x="67.5" y="6.5" width="240" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Shopping List"/>
@@ -162,7 +159,7 @@
                             <tableViewSection headerTitle="Count" id="D75-bC-l0g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yvy-7q-gGT">
-                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="156" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yvy-7q-gGT" id="e2V-wf-1GA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -206,7 +203,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gma-8K-JsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="y8h-ew-KGf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1313" y="993"/>
+            <point key="canvasLocation" x="1529" y="1831"/>
         </scene>
         <!--Grocery List-->
         <scene sceneID="aE3-zF-oR0">
@@ -221,7 +218,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ghW-Pg-PlP" id="WvO-b9-Fki">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="21p-KL-CIH">
@@ -232,7 +229,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aG0-SQ-Nib">
-                                            <rect key="frame" x="15" y="34" width="42" height="17"/>
+                                            <rect key="frame" x="15" y="34" width="41.5" height="16.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -374,7 +371,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZT1-hP-hUK" id="zSX-Be-hTd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jxq-II-wbf">
@@ -385,7 +382,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="03H-fs-Vp1">
-                                            <rect key="frame" x="15" y="34" width="42" height="17"/>
+                                            <rect key="frame" x="15" y="34" width="41.5" height="16.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -435,7 +432,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gii-Cw-mHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2172" y="411"/>
+            <point key="canvasLocation" x="3111.1999999999998" y="410.64467766116945"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ivg-sN-Oyu">
@@ -461,7 +458,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e6E-KR-Tkb" id="mij-pX-yl5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9t-lg-PXh">
@@ -475,13 +472,31 @@
                     </tableViewCellContentView>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="417" y="993"/>
+            <point key="canvasLocation" x="1348" y="993"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sAA-Vs-tcd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c1b-Hk-1NQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cd9-tx-Eo6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jdV-t7-t00" kind="relationship" relationship="rootViewController" id="0rE-7G-jR8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQw-it-X1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-410" y="993"/>
         </scene>
     </scenes>
     <resources>
         <image name="Barcode" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hkA-3p-Sg7"/>
+        <segue reference="cd8-8D-8oO"/>
     </inferredMetricsTieBreakers>
 </document>
