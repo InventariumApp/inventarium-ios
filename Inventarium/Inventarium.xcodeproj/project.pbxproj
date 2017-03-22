@@ -10,10 +10,10 @@
 		061A5F23C24030CA69EEA9ED /* Pods_Inventarium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */; };
 		4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05E3191E5172C2009CEF5D /* TwoViewController.swift */; };
 		4C494D931E81B16800F4DE7B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C494D921E81B16800F4DE7B /* CameraViewController.swift */; };
-		4C50A0651E4E1705003C22A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */; };
 		4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50A0661E4E2010003C22A7 /* LoginViewController.swift */; };
 		4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */; };
 		4C5A92231E527867007F9BF6 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92221E527867007F9BF6 /* PantryListViewController.swift */; };
+		4C69C71D1E8330F9004920E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C69C71C1E8330F9004920E9 /* GoogleService-Info.plist */; };
 		4C6FC0E11E611506008A9705 /* NewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC0E01E611506008A9705 /* NewItemTableViewController.swift */; };
 		4C72A79B1E8195FF0071D770 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */; };
 		4C8257951E68CBB7005D119E /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */; };
@@ -52,11 +52,11 @@
 		3C89B77C690764F67873C9C5 /* Pods-InventariumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumTests/Pods-InventariumTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C05E3191E5172C2009CEF5D /* TwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
 		4C494D921E81B16800F4DE7B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ../CameraViewController.swift; sourceTree = "<group>"; };
-		4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C50A0661E4E2010003C22A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C50A0681E4E2AE0003C22A7 /* Inventarium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventarium.entitlements; sourceTree = "<group>"; };
 		4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		4C5A92221E527867007F9BF6 /* PantryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryListViewController.swift; sourceTree = "<group>"; };
+		4C69C71C1E8330F9004920E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C6FC0E01E611506008A9705 /* NewItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTableViewController.swift; sourceTree = "<group>"; };
 		4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerController.swift; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 		4C93DAB51E4CFDF900024E9E = {
 			isa = PBXGroup;
 			children = (
-				4C50A0641E4E1705003C22A7 /* GoogleService-Info.plist */,
 				4C93DAC01E4CFDFA00024E9E /* Inventarium */,
 				4C93DAD51E4CFDFA00024E9E /* InventariumTests */,
 				4C93DAE01E4CFDFA00024E9E /* InventariumUITests */,
@@ -151,6 +150,7 @@
 		4C93DAC01E4CFDFA00024E9E /* Inventarium */ = {
 			isa = PBXGroup;
 			children = (
+				4C69C71C1E8330F9004920E9 /* GoogleService-Info.plist */,
 				4C50A0681E4E2AE0003C22A7 /* Inventarium.entitlements */,
 				4C93DAEF1E4D0C3000024E9E /* Models */,
 				4C93DAF41E4D0CA800024E9E /* Controllers */,
@@ -363,7 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C93DACC1E4CFDFA00024E9E /* LaunchScreen.storyboard in Resources */,
-				4C50A0651E4E1705003C22A7 /* GoogleService-Info.plist in Resources */,
+				4C69C71D1E8330F9004920E9 /* GoogleService-Info.plist in Resources */,
 				4C93DAC91E4CFDFA00024E9E /* Assets.xcassets in Resources */,
 				4C93DAC71E4CFDFA00024E9E /* Main.storyboard in Resources */,
 			);
