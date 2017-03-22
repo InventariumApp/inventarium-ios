@@ -9,8 +9,7 @@
 import UIKit
 import Firebase
 
-// Some Help: https://spin.atomicobject.com/2015/10/13/switching-child-view-controllers-ios-auto-layout/
-class TwoViewController: UIViewController {
+class TwoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var user: User!
     
     //Move to a function in each view controller... So that you can say: currentView.addItem rather than changing the ref...
@@ -20,6 +19,20 @@ class TwoViewController: UIViewController {
     weak var currentViewController: GroceryListTableViewController?
     var shoppingListViewController: ShoppingListViewController?
     var pantryListViewController: PantryListViewController?
+    var imagePicker: UIImagePickerController!
+    
+    @IBAction func cameraButtonClicked(_ sender: UIBarButtonItem) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        //imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    }
     
     override func viewDidLoad() {
         // If the user changed, set user var to the new user
