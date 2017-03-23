@@ -131,10 +131,20 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         var groceryItem = items[indexPath.row]
         selectedGroceryItem = groceryItem
-        infoCard.isHidden = false
         infoCardItemName.text = groceryItem.name
+        makeInfoCardAppear()
         print(groceryItem.getAmazonLink())
         tableView.reloadData()
+    }
+    
+    func makeInfoCardAppear() {
+        //infoCard.center = CGPoint(x: 187.5, y: 450)
+        infoCard.center = CGPoint(x: 187.5, y: 600)
+        infoCard.isHidden = false
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.infoCard.center.y = 450
+        }, completion: nil)
     }
 
     func onDeleteClicked(_ index: IndexPath) {
@@ -189,8 +199,13 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     
     @IBAction func panInfoBox(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.view)
-        sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
-        sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+        if (sender.view!.center.y > 600) {
+            sender.view?.isHidden = true
+        }
+        if (sender.view!.center.y > 450 || translation.y > 0) {
+            sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
+            sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+        }
     }
     
     override func viewWillLayoutSubviews() {
