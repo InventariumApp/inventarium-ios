@@ -13,6 +13,8 @@ import Alamofire
 class TwoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var user: User!
     
+    @IBOutlet weak var infoCard: CardView!
+    
     //Move to a function in each view controller... So that you can say: currentView.addItem rather than changing the ref...
     let ref = FIRDatabase.database().reference(withPath: "grocery-items")
     

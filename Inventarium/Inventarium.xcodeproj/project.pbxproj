@@ -26,6 +26,7 @@
 		4C93DAE21E4CFDFA00024E9E /* InventariumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAE11E4CFDFA00024E9E /* InventariumUITests.swift */; };
 		4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAF01E4D0C4C00024E9E /* GroceryItem.swift */; };
 		4C93DAF31E4D0C8000024E9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAF21E4D0C8000024E9E /* User.swift */; };
+		4CB77D411E837DED00ADE80A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB77D401E837DED00ADE80A /* CardView.swift */; };
 		7CAEE7FF495508F9DCAF03A5 /* Pods_InventariumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EA24C18A993D85A4FF338A /* Pods_InventariumTests.framework */; };
 		A90E14712DEA1B144E9418CB /* Pods_InventariumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BB5E29629CE49428F35C4F /* Pods_InventariumUITests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		4C93DAE31E4CFDFA00024E9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C93DAF01E4D0C4C00024E9E /* GroceryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		4C93DAF21E4D0C8000024E9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CB77D401E837DED00ADE80A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		69EA24C18A993D85A4FF338A /* Pods_InventariumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventariumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BB5E29629CE49428F35C4F /* Pods_InventariumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventariumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inventarium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 			children = (
 				4C93DAC51E4CFDFA00024E9E /* Main.storyboard */,
 				4C93DACA1E4CFDFA00024E9E /* LaunchScreen.storyboard */,
+				4CB77D401E837DED00ADE80A /* CardView.swift */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */,
 				4C494D931E81B16800F4DE7B /* CameraViewController.swift in Sources */,
 				4C6FC0E11E611506008A9705 /* NewItemTableViewController.swift in Sources */,
+				4CB77D411E837DED00ADE80A /* CardView.swift in Sources */,
 				4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */,
 				4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */,
 				4C8257951E68CBB7005D119E /* BarcodeScannerController.swift in Sources */,
