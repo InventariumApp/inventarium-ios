@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/ShoppingListViewController.swift"
-            timestampString = "511976851.624471"
+            timestampString = "511981297.933699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/ShoppingListViewController.swift"
-            timestampString = "509148490.698313"
+            timestampString = "511979525.613286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "ShoppingListViewController"
             landmarkType = "3">
             <Locations>
@@ -215,11 +215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/ShoppingListViewController.swift"
-            timestampString = "511976909.468535"
+            timestampString = "511981236.897148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "onDeleteClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>

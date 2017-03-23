@@ -67,7 +67,7 @@
         <!--Two View Controller-->
         <scene sceneID="1UI-Mz-Lyk">
             <objects>
-                <viewController id="Ehb-YV-z1J" customClass="TwoViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ehb-YV-z1J" customClass="TwoViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nkO-hS-nMr"/>
                         <viewControllerLayoutGuide type="bottom" id="9Ld-cA-8G9"/>
@@ -307,12 +307,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRj-PY-FLs" customClass="CardView" customModule="Inventarium" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRj-PY-FLs" customClass="CardView" customModule="Inventarium" customModuleProvider="target">
                                 <rect key="frame" x="11" y="375" width="353" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oranges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjC-iG-YaD">
-                                        <rect key="frame" x="19" y="15" width="162" height="27"/>
+                                        <rect key="frame" x="19" y="15" width="314" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -325,6 +325,9 @@
                                         <state key="normal" title="Purchase on Amazon">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="purchaseButtonClicked:" destination="U8L-rE-QzA" eventType="touchUpInside" id="GDZ-g4-f4U"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -335,6 +338,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="559"/>
                     <connections>
+                        <outlet property="infoCard" destination="SRj-PY-FLs" id="Uu8-tQ-wHm"/>
+                        <outlet property="infoCardButton" destination="9Oy-ga-BiM" id="6SD-xY-ngz"/>
+                        <outlet property="infoCardItemName" destination="DjC-iG-YaD" id="xHZ-tC-VRQ"/>
                         <outlet property="tableView" destination="56G-Jl-Ga0" id="Olr-ei-pZf"/>
                     </connections>
                 </viewController>
@@ -398,6 +404,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dm5-Tf-YCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2208.8000000000002" y="400.74962518740631"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="NBZ-4q-F3v">
+            <objects>
+                <viewController id="NQO-Jt-hYD" customClass="WebViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DD3-Fw-llc"/>
+                        <viewControllerLayoutGuide type="bottom" id="90u-EJ-IBp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EWy-fu-bc6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOR-ak-pVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3097" y="63"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="IKd-7C-zz5">

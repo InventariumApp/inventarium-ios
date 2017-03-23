@@ -28,6 +28,7 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         
         ref = FIRDatabase.database().reference(withPath: "lists/\(currentUser!.email)/pantry-list")
         tableView.allowsMultipleSelectionDuringEditing = false
+        tableView.tableFooterView = UIView(frame: .zero)
         
         //.value listens for all types of changes to the data in your Firebase database—add, removed, and changed
         ref.observe(.value, with: { snapshot in
@@ -134,6 +135,8 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         groceryItemRef.setValue(groceryItem.toAnyObject())
     }
     
+
+    
     
     public func addItemToList(list: String, item: GroceryItem) {
         let listPath:String = "lists/\(currentUser.email)/pantry-list"
@@ -143,6 +146,7 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         //Save data to the database.
         groceryItemRef.setValue(item.toAnyObject())
     }
+    
     
     // Attempting to fix the UITableViewWrapperView issue (list being offset)
     func fixTableViewInsets() {

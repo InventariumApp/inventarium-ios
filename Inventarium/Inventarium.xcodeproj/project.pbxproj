@@ -27,6 +27,7 @@
 		4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAF01E4D0C4C00024E9E /* GroceryItem.swift */; };
 		4C93DAF31E4D0C8000024E9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93DAF21E4D0C8000024E9E /* User.swift */; };
 		4CB77D411E837DED00ADE80A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB77D401E837DED00ADE80A /* CardView.swift */; };
+		4CB77D451E842ECF00ADE80A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB77D441E842ECF00ADE80A /* WebViewController.swift */; };
 		7CAEE7FF495508F9DCAF03A5 /* Pods_InventariumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EA24C18A993D85A4FF338A /* Pods_InventariumTests.framework */; };
 		A90E14712DEA1B144E9418CB /* Pods_InventariumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BB5E29629CE49428F35C4F /* Pods_InventariumUITests.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		4C93DAF01E4D0C4C00024E9E /* GroceryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
 		4C93DAF21E4D0C8000024E9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4CB77D401E837DED00ADE80A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		4CB77D441E842ECF00ADE80A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		69EA24C18A993D85A4FF338A /* Pods_InventariumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventariumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BB5E29629CE49428F35C4F /* Pods_InventariumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventariumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Inventarium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 				4C5A92221E527867007F9BF6 /* PantryListViewController.swift */,
 				4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */,
 				4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */,
+				4CB77D441E842ECF00ADE80A /* WebViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */,
 				4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */,
 				4C8257951E68CBB7005D119E /* BarcodeScannerController.swift in Sources */,
+				4CB77D451E842ECF00ADE80A /* WebViewController.swift in Sources */,
 				4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */,
 				4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */,
 			);

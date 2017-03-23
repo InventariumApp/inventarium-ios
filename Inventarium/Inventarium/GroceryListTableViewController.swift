@@ -13,7 +13,6 @@ class GroceryListTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.tableFooterView = UIView(frame: .zero)
     }
 
     override func didReceiveMemoryWarning() {

@@ -42,5 +42,10 @@ struct GroceryItem {
         ]
     }
     
+    func getAmazonLink() -> String {
+        let cleanedName = self.name.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        return "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=\(cleanedName)"
+    }
+    
 }
 

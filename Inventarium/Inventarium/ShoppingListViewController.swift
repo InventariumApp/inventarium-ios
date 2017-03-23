@@ -9,13 +9,18 @@
 import UIKit
 import Firebase
 import MGSwipeTableCell
+import SafariServices
 
-class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource {
+class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate {
     var items: [GroceryItem] = []
     var currentUser:User!
+    var selectedGroceryItem:GroceryItem!
 
     @IBOutlet var tableView: UITableView!
-    
+    @IBOutlet weak var infoCard: UIView!
+    @IBOutlet weak var infoCardItemName: UILabel!
+    @IBOutlet weak var infoCardButton: UIButton!
+
     //let ref = FIRDatabase.database().reference(withPath: "shopping-items")
     // NEED AN INIT THAT PROVIDES USER AND THEN ADDS EMAIL TO THE REF
     var ref:FIRDatabaseReference!
@@ -30,6 +35,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         
         ref = FIRDatabase.database().reference(withPath: "lists/\(currentUser!.email)/shopping-list")
         tableView.allowsMultipleSelectionDuringEditing = false
+        tableView.tableFooterView = UIView(frame: .zero)
         
         //.value listens for all types of changes to the data in your Firebase database—add, removed, and changed
         ref.observe(.value, with: { snapshot in
@@ -55,6 +61,9 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,6 +126,16 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             groceryItem.ref?.removeValue()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        var groceryItem = items[indexPath.row]
+        selectedGroceryItem = groceryItem
+        infoCard.isHidden = false
+        infoCardItemName.text = groceryItem.name
+        print(groceryItem.getAmazonLink())
+        tableView.reloadData()
+    }
 
     func onDeleteClicked(_ index: IndexPath) {
         // Get the item from the items list
@@ -150,6 +169,21 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         let zContentInsets = UIEdgeInsets.zero
         tableView.contentInset = zContentInsets
         tableView.scrollIndicatorInsets = zContentInsets
+    }
+    
+    func loadAmazonPage(_ web_url: String) {
+        let vc = SFSafariViewController(url: URL(string: web_url)!)
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
+        //present(vc, animated: true)
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        // Stuff run after safari is closed
+    }
+    
+    @IBAction func purchaseButtonClicked(_ sender: Any) {
+        loadAmazonPage(selectedGroceryItem.getAmazonLink())
     }
     
     override func viewWillLayoutSubviews() {
