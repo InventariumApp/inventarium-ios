@@ -180,10 +180,17 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         // Stuff run after safari is closed
+        self.tableView.reloadData()
     }
     
     @IBAction func purchaseButtonClicked(_ sender: Any) {
         loadAmazonPage(selectedGroceryItem.getAmazonLink())
+    }
+    
+    @IBAction func panInfoBox(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self.view)
+        sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
     }
     
     override func viewWillLayoutSubviews() {
