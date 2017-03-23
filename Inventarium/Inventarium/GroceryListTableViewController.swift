@@ -9,11 +9,11 @@
 import UIKit
 import Firebase
 
-class GroceryListTableViewController: UITableViewController {
+class GroceryListTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView(frame: .zero)
+        //tableView.tableFooterView = UIView(frame: .zero)
     }
 
     override func didReceiveMemoryWarning() {

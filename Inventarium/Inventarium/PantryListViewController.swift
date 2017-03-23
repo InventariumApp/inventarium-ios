@@ -10,14 +10,22 @@ import UIKit
 import Firebase
 import MGSwipeTableCell
 
-class PantryListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate {
+class PantryListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource {
     var items: [GroceryItem] = []
     var currentUser:User!
 
     var ref:FIRDatabaseReference!
     
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
+        
+        // This view controller itself will provide the delegate methods and row data for the table view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         ref = FIRDatabase.database().reference(withPath: "lists/\(currentUser!.email)/pantry-list")
         tableView.allowsMultipleSelectionDuringEditing = false
         
@@ -55,11 +63,11 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     
     // MARK: UITableView Delegate methods
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ItemCell"
         let groceryItem = items[indexPath.row]
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
@@ -95,11 +103,11 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Get the item from the items list
             let groceryItem = items[indexPath.row]
