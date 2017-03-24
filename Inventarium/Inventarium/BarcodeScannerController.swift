@@ -84,11 +84,8 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
             print("Error: cannot create URL")
             return
         }
-        
         let urlRequest = URLRequest(url: url)
-        
         let session = URLSession.shared
-
         let task = session.dataTask(with: urlRequest) {
             (data, response, error) in
             // check for any errors
@@ -102,28 +99,18 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                 print("Error: did not receive data")
                 return
             }
-            // parse the result as JSON, since that's what the API provides
+
             do {
                 guard let todo = try JSONSerialization.jsonObject(with: responseData, options: [])
                     as? [String: Any] else {
                         print("error trying to convert data to JSON")
                         return
                 }
-                // now we have the todo
-                // let's just print it to prove we can access it
-                
+
                 guard let productName = todo["clean_nm"] as? String else {
                     print("Could not get product name from JSON")
                     return
                 }
-                
-//                var result:String = ""
-//                
-//                if let productBrand = todo["brand_nm"] as? String {
-//                    result = "\(productBrand) \(productName)"
-//                } else {
-//                    result = productName
-//                }
                 
                 completion(productName)
                 

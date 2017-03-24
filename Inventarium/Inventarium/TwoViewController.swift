@@ -12,7 +12,8 @@ import Alamofire
 
 class TwoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var user: User!
-    
+    var product:String? = nil
+
     @IBOutlet weak var infoCard: CardView!
     
     //Move to a function in each view controller... So that you can say: currentView.addItem rather than changing the ref...
@@ -34,25 +35,14 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         present(imagePicker, animated: true, completion: nil)
     }
-    
-    func testImageUpload() {
-        let imageName = "inventarium_joke"
-        let image = UIImage(named: imageName)
-        
-        let filePath = uploadImageToDatabase(image: image!)
-        sendRequestToServer(img_path: filePath)
-    }
+
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         
-        
-        sendRequestToServer(img_path: "12112")
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         //imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let filePath = uploadImageToDatabase(image: image!)
-        sendRequestToServer(img_path: filePath)
-        print("*****" + filePath)
+        uploadImageToDatabase(image: image!)
     }
     
     func uploadImageToDatabase(image:UIImage) -> String {
@@ -60,7 +50,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         let storageRef = storage.reference()
         
         var data = NSData()
-        data = UIImageJPEGRepresentation(image, 0.8)! as NSData
+        data = UIImageJPEGRepresentation(image, 0.3)! as NSData
         // set upload path
         let filePath = "\(FIRAuth.auth()!.currentUser!.uid)/\("userPhoto")"
         let newMetadata = FIRStorageMetadata()
@@ -72,7 +62,16 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
             }else{
                 //store downloadURL
                 let downloadURL = metaData!.downloadURL()!.absoluteString
-                //print("Download URL" + downloadURL)
+                self.sendRequestToServer(img_path: filePath) { product  in
+                    if let product = product {
+                        print(product)
+                        //DispatchQueue.main.async {
+                        //self.product = product
+                        //self.performSegue(withIdentifier: "barcodeToAddItemSegue", sender: self)
+                        //}
+                    }
+                }
+                print("*****" + filePath)
                 //store downloadURL at database
                 //self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
             }
@@ -81,18 +80,58 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         return filePath
     }
     
-    func sendRequestToServer(img_path:String) {
+    func sendRequestToServer(img_path:String, completion: @escaping (_ result : String?)->()) {
         //let param = ["image_path":img_path]
         var escaped_path = img_path.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let url = "159.342.23.23/image_data/\(escaped_path)"
-
-        Alamofire.request(url, method: .post)
-            .responseJSON { response in
-                print(response.request as Any)  // original URL request
-                print(response.response as Any) // URL response
-                print(response.result.value as Any)   // result of response serialization
+        
+        let imageEndpoint = "http://159.203.166.121:8080/image_data/\(escaped_path)"
+        
+        guard let url = URL(string: imageEndpoint) else {
+            print("Error: cannot create URL")
+            return
         }
+        let urlRequest = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling GET on /todos/1")
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            do {
+                guard let todo = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                
+                guard let productName = todo["product_name"] as? String else {
+                    print("Could not get product name from JSON")
+                    return
+                }
+                
+                print(productName)
+                completion(productName)
+                
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+        // gtin_nm
+
     }
+    
+    
     
     override func viewDidLoad() {
         // If the user changed, set user var to the new user
@@ -112,7 +151,6 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
             self.currentViewController?.removeFromParentViewController()
         }
         self.navigationController?.navigationBar.tintColor = UIColor.white;
-        testImageUpload()
     }
 
     override func didReceiveMemoryWarning() {
