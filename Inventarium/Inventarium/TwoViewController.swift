@@ -32,7 +32,6 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-        
         present(imagePicker, animated: true, completion: nil)
     }
 

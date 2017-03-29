@@ -162,6 +162,16 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         let groceryItemRef = ref.child(String(groceryItem.name).lowercased())
         groceryItem.ref?.removeValue()
         groceryItemRef.setValue(groceryItem.toAnyObject())
+        addItemToHistory(item: groceryItem)
+    }
+    
+    func addItemToHistory(item:GroceryItem) {
+        let userPath:String = "lists/\(currentUser.email)"
+        let ref = FIRDatabase.database().reference(withPath: userPath)
+        let itemRef = ref.child(byAppendingPath: "item-history")
+        let thisItemRef = itemRef.child(byAppendingPath: String(item.name).lowercased())
+        let timeRef = thisItemRef.childByAutoId
+        timeRef().setValue(FIRServerValue.timestamp())
     }
 
     
