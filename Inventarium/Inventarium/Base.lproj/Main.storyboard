@@ -132,12 +132,13 @@
                         <outlet property="infoCard" destination="SRj-PY-FLs" id="eSH-xO-9EF"/>
                         <segue destination="HZU-tg-885" kind="showDetail" identifier="SegueFromMainToLogin" id="sIH-do-o1n"/>
                         <segue destination="19D-Z9-mNE" kind="unwind" identifier="unwindToLogin" unwindAction="backFromMainToLoginWithSegue:" id="O7m-xW-mdN"/>
+                        <segue destination="ZcQ-Zd-Rox" kind="presentation" identifier="cameraToAddItemSegue" id="a0R-Yg-wgp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2H-bZ-qlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="19D-Z9-mNE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1376.8" y="62.518740629685162"/>
+            <point key="canvasLocation" x="1431" y="63"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="vZy-Lj-3Y7">
@@ -151,7 +152,7 @@
                             <tableViewSection headerTitle="Item Name" id="rfK-XF-Fcw">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="nbk-FL-pqD">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nbk-FL-pqD" id="uGD-hg-BcH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -172,7 +173,7 @@
                             <tableViewSection headerTitle="Count" id="D75-bC-l0g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yvy-7q-gGT">
-                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yvy-7q-gGT" id="e2V-wf-1GA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

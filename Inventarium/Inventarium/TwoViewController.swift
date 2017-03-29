@@ -50,7 +50,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         let storageRef = storage.reference()
         
         var data = NSData()
-        data = UIImageJPEGRepresentation(image, 0.3)! as NSData
+        data = UIImageJPEGRepresentation(image, 0.1)! as NSData
         // set upload path
         let filePath = "\(FIRAuth.auth()!.currentUser!.uid)/\("userPhoto")"
         let newMetadata = FIRStorageMetadata()
@@ -65,10 +65,10 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
                 self.sendRequestToServer(img_path: filePath) { product  in
                     if let product = product {
                         print(product)
-                        //DispatchQueue.main.async {
-                        //self.product = product
-                        //self.performSegue(withIdentifier: "barcodeToAddItemSegue", sender: self)
-                        //}
+                        DispatchQueue.main.async {
+                            self.product = product
+                            self.performSegue(withIdentifier: "cameraToAddItemSegue", sender: self)
+                        }
                     }
                 }
                 print("*****" + filePath)
@@ -222,6 +222,15 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
                     self.pantryListViewController!.addItemToList(list: "pantry", item: newItem)
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cameraToAddItemSegue" {
+            let navigationViewController = (segue.destination as! UINavigationController)
+            let newItemTableViewController = navigationViewController.topViewController as! NewItemTableViewController
+            newItemTableViewController.prefilledItemName = self.product!
+            navigationViewController.view.tintColor = UIColor.black
         }
     }
     
