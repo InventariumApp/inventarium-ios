@@ -17,7 +17,6 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     var barcodenum:String? = nil
     var product:String? = nil
 
-    @IBOutlet weak var topbar: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     
     
@@ -49,7 +48,6 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
             view.bringSubview(toFront: messageLabel)
-            view.bringSubview(toFront: topbar)
             
             // Start video capture 
             captureSession?.startRunning()
