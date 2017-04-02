@@ -16,6 +16,29 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
     @IBOutlet weak var infoCard: CardView!
     
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        let optionMenu = UIAlertController(title: nil, message: "Share Via...", preferredStyle: .actionSheet)
+        
+        let smsAction = UIAlertAction(title: "SMS", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        
+        optionMenu.addAction(smsAction)
+        optionMenu.addAction(emailAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
     //Move to a function in each view controller... So that you can say: currentView.addItem rather than changing the ref...
     let ref = FIRDatabase.database().reference(withPath: "grocery-items")
     
