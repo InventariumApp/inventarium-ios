@@ -21,6 +21,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         
         let smsAction = UIAlertAction(title: "SMS", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
+            self.performSegue(withIdentifier: "toSMSSharing", sender: self)
         })
         
         let emailAction = UIAlertAction(title: "Email", style: .default, handler: {
