@@ -95,7 +95,7 @@
                     <navigationItem key="navigationItem" id="ikZ-aS-RJB">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="Settings-100" id="HO8-8i-Qnh">
-                            <color key="tintColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="X6i-5o-Cho" kind="show" id="0hk-HE-aNI"/>
                             </connections>
@@ -107,13 +107,13 @@
                                 <segment title="Shopping List"/>
                                 <segment title="Pantry"/>
                             </segments>
-                            <color key="tintColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="showComponentWithSender:" destination="Ehb-YV-z1J" eventType="valueChanged" id="axp-DH-vpb"/>
                             </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" image="Share Filled_44" id="Vw1-KS-ckN">
-                            <color key="tintColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="shareButton:" destination="Ehb-YV-z1J" id="fuq-q4-pg9"/>
                             </connections>
@@ -376,27 +376,32 @@
                                 <rect key="frame" x="11" y="375" width="353" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oranges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjC-iG-YaD">
-                                        <rect key="frame" x="19" y="15" width="314" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ORANGES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjC-iG-YaD">
+                                        <rect key="frame" x="19" y="8" width="314" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                        <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Oy-ga-BiM">
-                                        <rect key="frame" x="78" y="75" width="196" height="52"/>
+                                        <rect key="frame" x="78" y="90" width="196" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Purchase on Amazon">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="purchaseButtonClicked:" destination="U8L-rE-QzA" eventType="touchUpInside" id="GDZ-g4-f4U"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98034048080000002" green="0.77271401880000001" blue="0.30176499490000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="pOX-g3-7ur" appends="YES" id="SY3-dO-w7F"/>
                                 </connections>
@@ -564,7 +569,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zUI-vf-xzd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="YZa-PL-ybX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="YZa-PL-ybX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -596,7 +601,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="jmu-5C-c6Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -639,7 +644,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cd9-tx-Eo6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.99297678469999995" green="0.39045491809999999" blue="0.15663492679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -658,7 +663,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZHO-lp-iZx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AQu-Y1-sc7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AQu-Y1-sc7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.91858851909999995" green="0.25226634739999998" blue="0.1449482292" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -683,6 +688,6 @@
         <image name="bubbles" width="238" height="172"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cd8-8D-8oO"/>
+        <segue reference="a0R-Yg-wgp"/>
     </inferredMetricsTieBreakers>
 </document>
