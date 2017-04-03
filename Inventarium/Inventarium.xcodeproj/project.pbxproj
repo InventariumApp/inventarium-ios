@@ -207,6 +207,7 @@
 				4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */,
 				4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */,
 				4CB77D441E842ECF00ADE80A /* WebViewController.swift */,
+				4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -215,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				4C93DAC51E4CFDFA00024E9E /* Main.storyboard */,
-				4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */,
 				4C93DACA1E4CFDFA00024E9E /* LaunchScreen.storyboard */,
 				4CB77D401E837DED00ADE80A /* CardView.swift */,
 			);
