@@ -125,7 +125,7 @@
                         <segue destination="HZU-tg-885" kind="showDetail" identifier="SegueFromMainToLogin" id="sIH-do-o1n"/>
                         <segue destination="19D-Z9-mNE" kind="unwind" identifier="unwindToLogin" unwindAction="backFromMainToLoginWithSegue:" id="O7m-xW-mdN"/>
                         <segue destination="ZcQ-Zd-Rox" kind="presentation" identifier="cameraToAddItemSegue" id="a0R-Yg-wgp"/>
-                        <segue destination="c3I-Oz-FRJ" kind="presentation" identifier="toSMSSharing" modalPresentationStyle="formSheet" id="tSD-hL-aNr"/>
+                        <segue destination="ZHO-lp-iZx" kind="presentation" identifier="toSMSSharing" modalPresentationStyle="formSheet" id="tSD-hL-aNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2H-bZ-qlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,7 +262,7 @@
         <!--SMS Share View Controller-->
         <scene sceneID="kA8-Ab-THV">
             <objects>
-                <viewController title="SMS Share View Controller" id="c3I-Oz-FRJ" sceneMemberID="viewController">
+                <viewController title="SMS Share View Controller" id="c3I-Oz-FRJ" customClass="ShareViaSMSViewController" customModule="Inventarium" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UyD-n9-sFs"/>
                         <viewControllerLayoutGuide type="bottom" id="t8d-U7-ab4"/>
@@ -271,26 +271,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H36-d1-1LT">
-                                <rect key="frame" x="0.0" y="15" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="0.91858851909637451" green="0.25226634740829468" blue="0.14494822919368744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Share via SMS" id="EjV-MO-2Gf">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="7z8-NE-8zT">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wwW-Mz-Riz">
-                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Cancel"/>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bubbles" translatesAutoresizingMaskIntoConstraints="NO" id="JWR-KO-XCK">
                                 <rect key="frame" x="28" y="170" width="318" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -329,10 +309,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Share via SMS" id="yjo-lO-t1l">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="njk-w5-PrS">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelClicked:" destination="c3I-Oz-FRJ" id="xxH-LV-2NC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Li-Y8-8Ce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469.5999999999999" y="-550.07496251874068"/>
+            <point key="canvasLocation" x="2408.8000000000002" y="-550.07496251874068"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="mUJ-e5-Hma">
@@ -426,7 +414,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2208.8000000000002" y="-269.41529235382313"/>
+            <point key="canvasLocation" x="3148" y="-269.41529235382313"/>
         </scene>
         <!--Pantry List View Controller-->
         <scene sceneID="noS-u9-2cO">
@@ -658,6 +646,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQw-it-X1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-372" y="1747"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8Vm-kM-Ud5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZHO-lp-iZx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AQu-Y1-sc7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.91858851909999995" green="0.25226634739999998" blue="0.1449482292" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c3I-Oz-FRJ" kind="relationship" relationship="rootViewController" id="5nY-JR-mqu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0n-1i-PJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1469.5999999999999" y="-550.07496251874068"/>
         </scene>
     </scenes>
     <resources>
