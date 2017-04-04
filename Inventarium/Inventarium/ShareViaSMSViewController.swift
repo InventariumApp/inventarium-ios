@@ -50,6 +50,8 @@ class ShareViaSMSViewController: UIViewController, UITextFieldDelegate {
         newNum = newNum.replacingOccurrences(of: ")", with: "", options: .literal, range: nil)
         newNum = newNum.replacingOccurrences(of: "-", with: "", options: .literal, range: nil)
         newNum = newNum.replacingOccurrences(of: "+", with: "", options: .literal, range: nil)
+        newNum = newNum.replacingOccurrences(of: " ", with: "", options: .literal, range: nil)
+        newNum = "1" + newNum
         return newNum
     }
     
