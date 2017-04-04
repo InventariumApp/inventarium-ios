@@ -86,9 +86,8 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         cell.textLabel!.text = groceryItem.name
         cell.detailTextLabel!.text = String(groceryItem.count)
         cell.delegate = self //optional
-        
         //configure left buttons
-        cell.leftButtons = [MGSwipeButton(title: "Move To Pantry", backgroundColor: .green, callback: {
+        cell.leftButtons = [MGSwipeButton(title: "Move To Pantry", backgroundColor: .purple, callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             self.onMoveToPantryClicked(indexPath)
             return true

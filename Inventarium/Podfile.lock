@@ -40,6 +40,12 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
   - MGSwipeTableCell (1.5.6)
+  - PhoneNumberKit (1.2.2):
+    - PhoneNumberKit/PhoneNumberKitCore (= 1.2.2)
+    - PhoneNumberKit/UIKit (= 1.2.2)
+  - PhoneNumberKit/PhoneNumberKitCore (1.2.2)
+  - PhoneNumberKit/UIKit (1.2.2):
+    - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
   - Alamofire
@@ -48,6 +54,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - MGSwipeTableCell
+  - PhoneNumberKit
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
@@ -61,7 +68,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  PhoneNumberKit: ffae8f18fb78c1425c7af973711b0b0fd4f4104f
 
-PODFILE CHECKSUM: 527520d2dfb6d03f880ac209c3e2e7e60c1229c1
+PODFILE CHECKSUM: 006c652d1e2f028e5626a81669a3b880b1e5253c
 
 COCOAPODS: 1.2.0
