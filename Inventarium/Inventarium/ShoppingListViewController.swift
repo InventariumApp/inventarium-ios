@@ -17,13 +17,17 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     var selectedGroceryItem:GroceryItem!
 
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var infoCard: UIView!
-    @IBOutlet weak var infoCardItemName: UILabel!
-    @IBOutlet weak var infoCardButton: UIButton!
+    var infoCard: CardView!
+    var infoCardItemNameLabel: UILabel!
+    var infoCardItemName: String!
+    var infoCardButton: UIButton!
     
     var animator: UIDynamicAnimator!
     var attachmentBehavior : UIAttachmentBehavior!
     var snapBehavior : UISnapBehavior!
+    
+    var infoCardCenterY:Double = 480.0
+    var infoCardCenterX:Double = 27.0
 
     //let ref = FIRDatabase.database().reference(withPath: "shopping-items")
     // NEED AN INIT THAT PROVIDES USER AND THEN ADDS EMAIL TO THE REF
@@ -60,7 +64,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         })
         
         animator = UIDynamicAnimator(referenceView: view)
-        
+        createInfoCard()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -91,7 +95,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ItemCell"
         let groceryItem = items[indexPath.row]
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
         
         cell.textLabel!.text = groceryItem.name
         cell.detailTextLabel!.text = String(groceryItem.count)
@@ -138,9 +142,13 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        var groceryItem = items[indexPath.row]
+        let groceryItem = items[indexPath.row]
         selectedGroceryItem = groceryItem
-        infoCardItemName.text = groceryItem.name
+        infoCardItemName = groceryItem.name
+        infoCardItemNameLabel.text = infoCardItemName
+        if (infoCard != nil) {
+            dismissCard()
+        }
         makeInfoCardAppear()
         print(groceryItem.getAmazonLink())
         tableView.reloadData()
@@ -210,49 +218,51 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
      Info Box Animation Stuff
      */
     
-    func createInfoBox() {
-        let boxWidth: CGFloat = 250
-        let boxHeight: CGFloat = 150
-        let boxFrame: CGRect = CGRect(x: 0, y: 0, width: alertWidth, height: alertHeight)
-        alertView = UIView(frame: alertViewFrame)
-        alertView.backgroundColor = UIColor.red
-        alertView.alpha = 0.0
-        alertView.layer.cornerRadius = 10;
-        alertView.layer.shadowColor = UIColor.black.cgColor;
-        alertView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        alertView.layer.shadowOpacity = 0.3;
-        alertView.layer.shadowRadius = 10.0;
+    func createInfoCard() {
+        let cardWidth: CGFloat = 321
+        let cardHeight: CGFloat = 128
+        let cardFrame: CGRect = CGRect(x: CGFloat(view.center.x - 160), y: CGFloat(infoCardCenterY + 50), width: cardWidth, height: cardHeight)
+        infoCard = CardView(frame: cardFrame)
+        infoCard.backgroundColor = UIColor.purple
+        infoCard.alpha = 0.0
         
         // Create a button and set a listener on it for when it is tapped. Then the button is added to the alert view
         let button = UIButton(type: UIButtonType.system) as UIButton
-        button.setTitle("Dismiss", for: UIControlState.normal)
+        button.setTitle("Purchase", for: UIControlState.normal)
         button.backgroundColor = UIColor.white
-        button.frame =  CGRect(x: 0, y: 0, width: alertWidth, height: 40)
+        button.frame =  CGRect(x: 74, y: 75, width: 172, height: 34)
         
         
-        button.addTarget(self, action: Selector("dismissAlert"), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(self.purchaseButtonClicked(_:)), for: UIControlEvents.touchUpInside)
         
-        alertView.addSubview(button)
-        view.addSubview(alertView)
+        infoCard.addSubview(button)
+        
+        // Create item title
+        infoCardItemNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 218, height: 37))
+        infoCardItemNameLabel.center = CGPoint(x: 139, y: 22)
+        infoCardItemNameLabel.textAlignment = .center
+        infoCardItemNameLabel.textColor = .white
+        infoCardItemNameLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 27.0)
+        infoCardItemNameLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        infoCardItemNameLabel.numberOfLines = 2
+        infoCardItemNameLabel.text = infoCardItemName
+        
+        infoCard.addSubview(infoCardItemNameLabel)
+        
+        view.addSubview(infoCard)
     }
     
     func makeInfoCardAppear() {
-        infoCard.isHidden = false
-
+        if infoCard == nil {
+           createInfoCard()
+        }
         createGestureRecognizer()
         animator.removeAllBehaviors()
         
         infoCard.alpha = 1.0
         
-        var snapBehaviour: UISnapBehavior = UISnapBehavior(item: infoCard, snapTo: view.center)
+        let snapBehaviour: UISnapBehavior = UISnapBehavior(item: infoCard, snapTo: CGPoint(x: view.center.x, y: CGFloat(infoCardCenterY)))
         animator.addBehavior(snapBehaviour)
-        
-//        //infoCard.center = CGPoint(x: 187.5, y: 450)
-//        infoCard.center = CGPoint(x: 187.5, y: 600)
-//
-//        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//            self.infoCard.center.y = 450
-//        }, completion: nil)
     }
     
     func createGestureRecognizer() {
@@ -268,11 +278,8 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             // Twist in direction of pan
             if sender.state == UIGestureRecognizerState.began {
                 animator.removeAllBehaviors()
-                
-                let offset = UIOffsetMake(panLocationInBoxView.x - infoCard.bounds.midX, panLocationInBoxView.y - infoCard.bounds.midY);
-                
+                let offset = UIOffsetMake(panLocationInBoxView.x - infoCard.bounds.midX, panLocationInBoxView.y - infoCard.bounds.midY)
                 attachmentBehavior = UIAttachmentBehavior(item: infoCard, offsetFromCenter: offset, attachedToAnchor: panLocationInView)
-                
                 animator.addBehavior(attachmentBehavior)
             }
                 
@@ -284,11 +291,9 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             // Snap back to original location
             else if sender.state == UIGestureRecognizerState.ended {
                 animator.removeAllBehaviors()
-                
-                snapBehavior = UISnapBehavior(item: infoCard, snapTo: view.center)
+                snapBehavior = UISnapBehavior(item: infoCard, snapTo: CGPoint(x: view.center.x, y: CGFloat(infoCardCenterY)))
                 animator.addBehavior(snapBehavior)
-                
-                if sender.translation(in: view).y > 100 {
+                if sender.translation(in: view).y > 75 {
                     dismissCard()
                 }
             }
@@ -298,12 +303,12 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     func dismissCard() {
         animator.removeAllBehaviors()
         
-        var gravityBehaviour: UIGravityBehavior = UIGravityBehavior(items: [infoCard])
+        let gravityBehaviour: UIGravityBehavior = UIGravityBehavior(items: [infoCard])
         gravityBehaviour.gravityDirection = CGVector(dx: 0.0, dy: 10.0);
         animator.addBehavior(gravityBehaviour)
         
         // tilt when falling
-        var itemBehaviour: UIDynamicItemBehavior = UIDynamicItemBehavior(items: [infoCard])
+        let itemBehaviour: UIDynamicItemBehavior = UIDynamicItemBehavior(items: [infoCard])
         itemBehaviour.addAngularVelocity(CGFloat(-M_PI_2), for: infoCard)
         animator.addBehavior(itemBehaviour)
         
@@ -312,17 +317,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
         
     }
-    
-//    @IBAction func panInfoBox(_ sender: UIPanGestureRecognizer) {
-////        let translation = sender.translation(in: self.view)
-////        if (sender.view!.center.y > 600) {
-////            sender.view?.isHidden = true
-////        }
-////        if (sender.view!.center.y > 450 || translation.y > 0) {
-////            sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
-////            sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
-////        }
-//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

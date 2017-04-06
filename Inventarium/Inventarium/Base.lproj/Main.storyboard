@@ -121,7 +121,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="kxs-Zy-ix3" id="30J-2Q-ZGV"/>
-                        <outlet property="infoCard" destination="SRj-PY-FLs" id="eSH-xO-9EF"/>
                         <segue destination="HZU-tg-885" kind="showDetail" identifier="SegueFromMainToLogin" id="sIH-do-o1n"/>
                         <segue destination="19D-Z9-mNE" kind="unwind" identifier="unwindToLogin" unwindAction="backFromMainToLoginWithSegue:" id="O7m-xW-mdN"/>
                         <segue destination="ZcQ-Zd-Rox" kind="presentation" identifier="cameraToAddItemSegue" id="a0R-Yg-wgp"/>
@@ -410,9 +409,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="559"/>
                     <connections>
-                        <outlet property="infoCard" destination="SRj-PY-FLs" id="Uu8-tQ-wHm"/>
-                        <outlet property="infoCardButton" destination="9Oy-ga-BiM" id="6SD-xY-ngz"/>
-                        <outlet property="infoCardItemName" destination="DjC-iG-YaD" id="xHZ-tC-VRQ"/>
                         <outlet property="tableView" destination="56G-Jl-Ga0" id="Olr-ei-pZf"/>
                     </connections>
                 </viewController>
