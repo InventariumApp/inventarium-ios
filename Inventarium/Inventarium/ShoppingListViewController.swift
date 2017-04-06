@@ -20,6 +20,10 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     @IBOutlet weak var infoCard: UIView!
     @IBOutlet weak var infoCardItemName: UILabel!
     @IBOutlet weak var infoCardButton: UIButton!
+    
+    var animator: UIDynamicAnimator!
+    var attachmentBehavior : UIAttachmentBehavior!
+    var snapBehavior : UISnapBehavior!
 
     //let ref = FIRDatabase.database().reference(withPath: "shopping-items")
     // NEED AN INIT THAT PROVIDES USER AND THEN ADDS EMAIL TO THE REF
@@ -54,13 +58,19 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             self.items = newItems
             self.tableView.reloadData()
         })
-
+        
+        animator = UIDynamicAnimator(referenceView: view)
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func prepareInfoCard() {
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,16 +145,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         print(groceryItem.getAmazonLink())
         tableView.reloadData()
     }
-    
-    func makeInfoCardAppear() {
-        //infoCard.center = CGPoint(x: 187.5, y: 450)
-        infoCard.center = CGPoint(x: 187.5, y: 600)
-        infoCard.isHidden = false
-        
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.infoCard.center.y = 450
-        }, completion: nil)
-    }
 
     func onDeleteClicked(_ index: IndexPath) {
         // Get the item from the items list
@@ -206,16 +206,123 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         loadAmazonPage(selectedGroceryItem.getAmazonLink())
     }
     
-    @IBAction func panInfoBox(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: self.view)
-        if (sender.view!.center.y > 600) {
-            sender.view?.isHidden = true
-        }
-        if (sender.view!.center.y > 450 || translation.y > 0) {
-            sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
-            sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+    /*
+     Info Box Animation Stuff
+     */
+    
+    func createInfoBox() {
+        let boxWidth: CGFloat = 250
+        let boxHeight: CGFloat = 150
+        let boxFrame: CGRect = CGRect(x: 0, y: 0, width: alertWidth, height: alertHeight)
+        alertView = UIView(frame: alertViewFrame)
+        alertView.backgroundColor = UIColor.red
+        alertView.alpha = 0.0
+        alertView.layer.cornerRadius = 10;
+        alertView.layer.shadowColor = UIColor.black.cgColor;
+        alertView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        alertView.layer.shadowOpacity = 0.3;
+        alertView.layer.shadowRadius = 10.0;
+        
+        // Create a button and set a listener on it for when it is tapped. Then the button is added to the alert view
+        let button = UIButton(type: UIButtonType.system) as UIButton
+        button.setTitle("Dismiss", for: UIControlState.normal)
+        button.backgroundColor = UIColor.white
+        button.frame =  CGRect(x: 0, y: 0, width: alertWidth, height: 40)
+        
+        
+        button.addTarget(self, action: Selector("dismissAlert"), for: UIControlEvents.touchUpInside)
+        
+        alertView.addSubview(button)
+        view.addSubview(alertView)
+    }
+    
+    func makeInfoCardAppear() {
+        infoCard.isHidden = false
+
+        createGestureRecognizer()
+        animator.removeAllBehaviors()
+        
+        infoCard.alpha = 1.0
+        
+        var snapBehaviour: UISnapBehavior = UISnapBehavior(item: infoCard, snapTo: view.center)
+        animator.addBehavior(snapBehaviour)
+        
+//        //infoCard.center = CGPoint(x: 187.5, y: 450)
+//        infoCard.center = CGPoint(x: 187.5, y: 600)
+//
+//        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+//            self.infoCard.center.y = 450
+//        }, completion: nil)
+    }
+    
+    func createGestureRecognizer() {
+        let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(sender:)))
+        view.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    func handlePan(sender: UIPanGestureRecognizer) {
+        if (infoCard != nil) {
+            let panLocationInView = sender.location(in: view)
+            let panLocationInBoxView = sender.location(in: infoCard)
+            
+            // Twist in direction of pan
+            if sender.state == UIGestureRecognizerState.began {
+                animator.removeAllBehaviors()
+                
+                let offset = UIOffsetMake(panLocationInBoxView.x - infoCard.bounds.midX, panLocationInBoxView.y - infoCard.bounds.midY);
+                
+                attachmentBehavior = UIAttachmentBehavior(item: infoCard, offsetFromCenter: offset, attachedToAnchor: panLocationInView)
+                
+                animator.addBehavior(attachmentBehavior)
+            }
+                
+            // Move to user's finger
+            else if sender.state == UIGestureRecognizerState.changed {
+                attachmentBehavior.anchorPoint = panLocationInView
+            }
+                
+            // Snap back to original location
+            else if sender.state == UIGestureRecognizerState.ended {
+                animator.removeAllBehaviors()
+                
+                snapBehavior = UISnapBehavior(item: infoCard, snapTo: view.center)
+                animator.addBehavior(snapBehavior)
+                
+                if sender.translation(in: view).y > 100 {
+                    dismissCard()
+                }
+            }
         }
     }
+    
+    func dismissCard() {
+        animator.removeAllBehaviors()
+        
+        var gravityBehaviour: UIGravityBehavior = UIGravityBehavior(items: [infoCard])
+        gravityBehaviour.gravityDirection = CGVector(dx: 0.0, dy: 10.0);
+        animator.addBehavior(gravityBehaviour)
+        
+        // tilt when falling
+        var itemBehaviour: UIDynamicItemBehavior = UIDynamicItemBehavior(items: [infoCard])
+        itemBehaviour.addAngularVelocity(CGFloat(-M_PI_2), for: infoCard)
+        animator.addBehavior(itemBehaviour)
+        
+        self.infoCard.removeFromSuperview()
+        self.infoCard = nil
+
+        
+    }
+    
+//    @IBAction func panInfoBox(_ sender: UIPanGestureRecognizer) {
+////        let translation = sender.translation(in: self.view)
+////        if (sender.view!.center.y > 600) {
+////            sender.view?.isHidden = true
+////        }
+////        if (sender.view!.center.y > 450 || translation.y > 0) {
+////            sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
+////            sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+////        }
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
