@@ -15,6 +15,9 @@ class itemViewController: UIViewController {
     var itemCountString: String?
     var itemNameString: String?
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         itemName.text = itemNameString
