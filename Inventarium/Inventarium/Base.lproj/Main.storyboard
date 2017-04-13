@@ -354,7 +354,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ghW-Pg-PlP" id="WvO-b9-Fki">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="21p-KL-CIH">
@@ -418,7 +418,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="tableView" destination="56G-Jl-Ga0" id="Olr-ei-pZf"/>
-                        <segue destination="EGj-Yu-Inc" kind="show" identifier="showItemController" id="DsS-Ep-QEZ"/>
+                        <segue destination="EGj-Yu-Inc" kind="presentation" identifier="showItemController" id="DsS-Ep-QEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cey-Hl-69l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,7 +434,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XkP-Fz-YiU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dJn-YR-V4z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDo-iQ-h9P">
@@ -473,6 +473,10 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="itemCount" destination="DDN-QX-1bX" id="06x-dG-Lta"/>
+                        <outlet property="itemName" destination="Xk8-B9-Tjw" id="fy9-9l-QhW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubM-bt-RgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

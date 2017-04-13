@@ -10,8 +10,17 @@ import UIKit
 
 class itemViewController: UIViewController {
 
+    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var itemCount: UILabel!
+    var itemCountString: String?
+    var itemNameString: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemName.text = itemNameString
+        itemCount.text = itemCountString
+        
+        self.navigationController?.navigationBar.isHidden = true;
 
         // Do any additional setup after loading the view.
     }

@@ -36,7 +36,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //HeroDebugPlugin.isEnabled = true
+        HeroDebugPlugin.isEnabled = true
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
         // This view controller itself will provide the delegate methods and row data for the table view.
@@ -174,6 +174,15 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             self.performSegue(withIdentifier: "showItemController", sender: self)
         //}
     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showItemController") {
+            let itemViewController = (segue.destination as! itemViewController)
+            itemViewController.itemNameString = selectedGroceryItem.name
+            itemViewController.itemCountString = String(selectedGroceryItem.count)
+        }
+
     }
 
     func onDeleteClicked(_ index: IndexPath) {
