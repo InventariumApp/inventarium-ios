@@ -164,7 +164,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
             self.pantryListViewController = self.storyboard?.instantiateViewController(withIdentifier: "ComponentB") as! PantryListViewController?
             self.shoppingListViewController?.currentUser = self.user
             self.pantryListViewController?.currentUser = self.user
-            self.currentViewController = self.shoppingListViewController
+            self.currentViewController = self.pantryListViewController
             self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
             self.addChildViewController(self.currentViewController!)
             self.addSubview(subView: self.currentViewController!.view, toView: self.containerView)
