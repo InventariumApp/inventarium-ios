@@ -22,7 +22,7 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         super.viewDidLoad()
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
-        // This view controller itself will provide the delegate methods and row data for the table view.
+        // Set delegate to self
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -30,7 +30,7 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.tableFooterView = UIView(frame: .zero)
         
-        //.value listens for all types of changes to the data in your Firebase database—add, removed, and changed
+        //.value listens for all types of changes to the data in the Firebase database—add, removed, and changed
         ref.observe(.value, with: { snapshot in
             // Store the latest version of the data
             var newItems: [GroceryItem] = []

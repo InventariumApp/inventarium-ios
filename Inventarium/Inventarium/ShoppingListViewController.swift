@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MGSwipeTableCell
 import SafariServices
+import Hero
 
 class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate {
     var items: [GroceryItem] = []
@@ -35,6 +36,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //HeroDebugPlugin.isEnabled = true
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
         // This view controller itself will provide the delegate methods and row data for the table view.
@@ -144,14 +146,34 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         let groceryItem = items[indexPath.row]
         selectedGroceryItem = groceryItem
-        infoCardItemName = groceryItem.name
-        infoCardItemNameLabel.text = infoCardItemName
-        if (infoCard != nil) {
-            dismissCard()
-        }
-        makeInfoCardAppear()
-        print(groceryItem.getAmazonLink())
+//        infoCardItemName = groceryItem.name
+//        infoCardItemNameLabel.text = infoCardItemName
+//        if (infoCard != nil) {
+//            dismissCard()
+//        }
+//        makeInfoCardAppear()
+//        print(groceryItem.getAmazonLink())
+        
+        cell.heroID = "itemBackground"
+        cell.textLabel?.heroID = "itemName"
+        cell.detailTextLabel?.heroID = "itemCount"
+        //cell.textLabel?.heroModifiers = [.zPosition(CGFloat(2000))]
+        //cell.heroModifiers = [.zPosition(CGFloat(2000))]
+        loadHeroView()
+        
         tableView.reloadData()
+    }
+    
+    func loadHeroView(){
+        //GARBAGE
+        //        let vc = itemViewController()
+        //
+        //DispatchQueue.main.async {
+            //self.hero_replaceViewController(with: itemViewController())
+
+            self.performSegue(withIdentifier: "showItemController", sender: self)
+        //}
+    
     }
 
     func onDeleteClicked(_ index: IndexPath) {

@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Alamofire
 
 class TwoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var user: User!

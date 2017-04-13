@@ -8,8 +8,10 @@
 
 import UIKit
 
+//https://www.raywenderlich.com/113772/uisearchcontroller-tutorial
+//http://www.matthewhsingleton.com/blog/2016/5/26/predictive-text-table-view-swift-version-of-ray-wenderlich
 class NewItemTableViewController: UITableViewController {
-    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var itemNameTextField: UISearchBar!
 
     @IBOutlet weak var countTextField: UITextField!
     

@@ -9,8 +9,8 @@ target 'Inventarium' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'MGSwipeTableCell'
-  pod 'Alamofire'
   pod 'PhoneNumberKit'
+  pod 'Hero'
   # Pods for Inventarium
 
   target 'InventariumTests' do
