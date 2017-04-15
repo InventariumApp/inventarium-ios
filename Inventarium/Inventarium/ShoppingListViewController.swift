@@ -16,6 +16,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     var items: [GroceryItem] = []
     var currentUser:User!
     var selectedGroceryItem:GroceryItem!
+    var selectedCell:UITableViewCell!
 
     @IBOutlet var tableView: UITableView!
     var infoCard: CardView!
@@ -36,7 +37,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        HeroDebugPlugin.isEnabled = true
+        //HeroDebugPlugin.isEnabled = true
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
         // This view controller itself will provide the delegate methods and row data for the table view.
@@ -147,7 +148,16 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         let groceryItem = items[indexPath.row]
+        
+        // Remove HeroID from previously selected cell
+        if let previousCell = selectedCell {
+            previousCell.heroID = nil
+            previousCell.textLabel?.heroID = nil
+            previousCell.detailTextLabel?.heroID = nil
+        }
+        
         selectedGroceryItem = groceryItem
+        selectedCell = cell
 //        infoCardItemName = groceryItem.name
 //        infoCardItemNameLabel.text = infoCardItemName
 //        if (infoCard != nil) {
