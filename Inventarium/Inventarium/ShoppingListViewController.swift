@@ -68,6 +68,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         
         animator = UIDynamicAnimator(referenceView: view)
         createInfoCard()
+        heroModalAnimationType = .selectBy(presenting:.none, dismissing:.fade)
         
         
 
@@ -169,7 +170,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         cell.heroID = "itemBackground"
         cell.textLabel?.heroID = "itemName"
         cell.detailTextLabel?.heroID = "itemCount"
-        //cell.textLabel?.heroModifiers = [.zPosition(CGFloat(2000))]
+        cell.textLabel?.heroModifiers = [.zPosition(CGFloat(2000))]
         //cell.heroModifiers = [.zPosition(CGFloat(2000))]
         loadHeroView()
         

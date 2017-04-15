@@ -12,11 +12,17 @@ class itemViewController: UIViewController {
 
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemCount: UILabel!
-    var itemCountString: String?
-    var itemNameString: String?
+    @IBOutlet weak var itemBackground: CardView!
+    @IBOutlet weak var insightsWebView: UIWebView!
+    @IBOutlet weak var whiteBackground: UILabel!
     
+    var itemCountString: String?
+    var itemNameString: String?   
     @IBAction func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+        itemCount.heroModifiers = [.fade, .scale(0.5)]
+        itemName.heroModifiers = [.fade, .scale(0.5)]
+        itemBackground.heroModifiers = [.fade, .scale(0.5)]
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,13 @@ class itemViewController: UIViewController {
         itemCount.text = itemCountString
         
         self.navigationController?.navigationBar.isHidden = true;
+
+        whiteBackground.isUserInteractionEnabled = true
+    
+        
+        let url = URL(string: "http://159.203.166.121:8080/graphs")
+        insightsWebView.loadRequest(URLRequest(url: url!))
+        
 
         // Do any additional setup after loading the view.
     }
