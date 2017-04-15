@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class itemViewController: UIViewController {
+class itemViewController: UIViewController, SFSafariViewControllerDelegate {
 
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemCount: UILabel!
@@ -17,13 +18,20 @@ class itemViewController: UIViewController {
     @IBOutlet weak var whiteBackground: UILabel!
     
     var itemCountString: String?
-    var itemNameString: String?   
+    var itemNameString: String?
+    var item: GroceryItem?
+    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         itemCount.heroModifiers = [.fade, .scale(0.5)]
         itemName.heroModifiers = [.fade, .scale(0.5)]
         itemBackground.heroModifiers = [.fade, .scale(0.5)]
     }
+    
+    @IBAction func buyNowButtonClicked(_ sender: UIButton) {
+        loadAmazonPage((item?.getAmazonLink())!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         itemName.text = itemNameString
@@ -39,6 +47,13 @@ class itemViewController: UIViewController {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func loadAmazonPage(_ web_url: String) {
+        let vc = SFSafariViewController(url: URL(string: web_url)!)
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
+        //present(vc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

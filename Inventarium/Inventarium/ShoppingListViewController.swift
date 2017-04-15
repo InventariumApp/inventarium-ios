@@ -12,24 +12,17 @@ import MGSwipeTableCell
 import SafariServices
 import Hero
 
-class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate {
+class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource {
     var items: [GroceryItem] = []
     var currentUser:User!
     var selectedGroceryItem:GroceryItem!
     var selectedCell:UITableViewCell!
 
     @IBOutlet var tableView: UITableView!
-    var infoCard: CardView!
-    var infoCardItemNameLabel: UILabel!
-    var infoCardItemName: String!
-    var infoCardButton: UIButton!
     
     var animator: UIDynamicAnimator!
     var attachmentBehavior : UIAttachmentBehavior!
     var snapBehavior : UISnapBehavior!
-    
-    var infoCardCenterY:Double = 480.0
-    var infoCardCenterX:Double = 27.0
 
     //let ref = FIRDatabase.database().reference(withPath: "shopping-items")
     // NEED AN INIT THAT PROVIDES USER AND THEN ADDS EMAIL TO THE REF
@@ -67,7 +60,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         })
         
         animator = UIDynamicAnimator(referenceView: view)
-        createInfoCard()
         heroModalAnimationType = .selectBy(presenting:.none, dismissing:.fade)
         
         
@@ -77,10 +69,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    func prepareInfoCard() {
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -194,6 +182,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
             let itemViewController = (segue.destination as! itemViewController)
             itemViewController.itemNameString = selectedGroceryItem.name
             itemViewController.itemCountString = String(selectedGroceryItem.count)
+            itemViewController.item = selectedGroceryItem
         }
 
     }
@@ -242,124 +231,9 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         tableView.scrollIndicatorInsets = zContentInsets
     }
     
-    func loadAmazonPage(_ web_url: String) {
-        let vc = SFSafariViewController(url: URL(string: web_url)!)
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
-        //present(vc, animated: true)
-    }
-    
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         // Stuff run after safari is closed
         self.tableView.reloadData()
-    }
-    
-    @IBAction func purchaseButtonClicked(_ sender: Any) {
-        loadAmazonPage(selectedGroceryItem.getAmazonLink())
-    }
-    
-    /*
-     Info Box Animation Stuff
-     */
-    
-    func createInfoCard() {
-        let cardWidth: CGFloat = 321
-        let cardHeight: CGFloat = 128
-        let cardFrame: CGRect = CGRect(x: CGFloat(view.center.x - 160), y: CGFloat(infoCardCenterY + 50), width: cardWidth, height: cardHeight)
-        infoCard = CardView(frame: cardFrame)
-        infoCard.backgroundColor = UIColor.purple
-        infoCard.alpha = 0.0
-        
-        // Create a button and set a listener on it for when it is tapped. Then the button is added to the alert view
-        let button = UIButton(type: UIButtonType.system) as UIButton
-        button.setTitle("Purchase", for: UIControlState.normal)
-        button.backgroundColor = UIColor.white
-        button.frame =  CGRect(x: 74, y: 75, width: 172, height: 34)
-        
-        
-        button.addTarget(self, action: #selector(self.purchaseButtonClicked(_:)), for: UIControlEvents.touchUpInside)
-        
-        infoCard.addSubview(button)
-        
-        // Create item title
-        infoCardItemNameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 218, height: 37))
-        infoCardItemNameLabel.center = CGPoint(x: 139, y: 22)
-        infoCardItemNameLabel.textAlignment = .center
-        infoCardItemNameLabel.textColor = .white
-        infoCardItemNameLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 27.0)
-        infoCardItemNameLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-        infoCardItemNameLabel.numberOfLines = 2
-        infoCardItemNameLabel.text = infoCardItemName
-        
-        infoCard.addSubview(infoCardItemNameLabel)
-        
-        view.addSubview(infoCard)
-    }
-    
-    func makeInfoCardAppear() {
-        if infoCard == nil {
-           createInfoCard()
-        }
-        createGestureRecognizer()
-        animator.removeAllBehaviors()
-        
-        infoCard.alpha = 1.0
-        
-        let snapBehaviour: UISnapBehavior = UISnapBehavior(item: infoCard, snapTo: CGPoint(x: view.center.x, y: CGFloat(infoCardCenterY)))
-        animator.addBehavior(snapBehaviour)
-    }
-    
-    func createGestureRecognizer() {
-        let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(sender:)))
-        view.addGestureRecognizer(panGestureRecognizer)
-    }
-    
-    func handlePan(sender: UIPanGestureRecognizer) {
-        if (infoCard != nil) {
-            let panLocationInView = sender.location(in: view)
-            let panLocationInBoxView = sender.location(in: infoCard)
-            
-            // Twist in direction of pan
-            if sender.state == UIGestureRecognizerState.began {
-                animator.removeAllBehaviors()
-                let offset = UIOffsetMake(panLocationInBoxView.x - infoCard.bounds.midX, panLocationInBoxView.y - infoCard.bounds.midY)
-                attachmentBehavior = UIAttachmentBehavior(item: infoCard, offsetFromCenter: offset, attachedToAnchor: panLocationInView)
-                animator.addBehavior(attachmentBehavior)
-            }
-                
-            // Move to user's finger
-            else if sender.state == UIGestureRecognizerState.changed {
-                attachmentBehavior.anchorPoint = panLocationInView
-            }
-                
-            // Snap back to original location
-            else if sender.state == UIGestureRecognizerState.ended {
-                animator.removeAllBehaviors()
-                snapBehavior = UISnapBehavior(item: infoCard, snapTo: CGPoint(x: view.center.x, y: CGFloat(infoCardCenterY)))
-                animator.addBehavior(snapBehavior)
-                if sender.translation(in: view).y > 75 {
-                    dismissCard()
-                }
-            }
-        }
-    }
-    
-    func dismissCard() {
-        animator.removeAllBehaviors()
-        
-        let gravityBehaviour: UIGravityBehavior = UIGravityBehavior(items: [infoCard])
-        gravityBehaviour.gravityDirection = CGVector(dx: 0.0, dy: 10.0);
-        animator.addBehavior(gravityBehaviour)
-        
-        // tilt when falling
-        let itemBehaviour: UIDynamicItemBehavior = UIDynamicItemBehavior(items: [infoCard])
-        itemBehaviour.addAngularVelocity(CGFloat(-M_PI_2), for: infoCard)
-        animator.addBehavior(itemBehaviour)
-        
-        self.infoCard.removeFromSuperview()
-        self.infoCard = nil
-
-        
     }
     
     override func viewWillLayoutSubviews() {
