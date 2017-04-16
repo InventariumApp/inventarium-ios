@@ -235,7 +235,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBAction func saveNewItem(segue:UIStoryboardSegue) {
         if let newItemTableviewController = segue.source as? NewItemTableViewController {
             if let item = newItemTableviewController.item {
-                let newItem = GroceryItem(name: item.name, addedByUser: self.user.email, count: item.count)
+                let newItem = GroceryItem(name: item.name, addedByUser: self.user.email, count: item.count, price: item.price, imageURL: item.imageURL)
                 
                 if (self.currentViewController == self.shoppingListViewController) {
                     self.shoppingListViewController!.addItemToList(list: "shopping", item: newItem)

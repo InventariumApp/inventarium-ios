@@ -14,9 +14,12 @@ class itemViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemCount: UILabel!
     @IBOutlet weak var itemBackground: CardView!
+    @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var insightsWebView: UIWebView!
-    @IBOutlet weak var whiteBackground: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
     
+    var itemPriceString: UILabel!
+
     var itemCountString: String?
     var itemNameString: String?
     var item: GroceryItem?
@@ -36,15 +39,18 @@ class itemViewController: UIViewController, SFSafariViewControllerDelegate {
         super.viewDidLoad()
         itemName.text = itemNameString
         itemCount.text = itemCountString
+        if let price = item?.price {
+            itemPrice.text = price
+        }
         
-        self.navigationController?.navigationBar.isHidden = true;
-
-        whiteBackground.isUserInteractionEnabled = true
-    
+        self.navigationController?.navigationBar.isHidden = true;    
         
         let url = URL(string: "http://159.203.166.121:8080/graphs")
         insightsWebView.loadRequest(URLRequest(url: url!))
-        
+        if let url = item?.imageURL {
+            itemImageView.imageFromServerURL(urlString: url)
+        }
+
 
         // Do any additional setup after loading the view.
     }
@@ -73,3 +79,20 @@ class itemViewController: UIViewController, SFSafariViewControllerDelegate {
     */
 
 }
+
+extension UIImageView {
+    public func imageFromServerURL(urlString: String) {
+        
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+            
+        }).resume()
+    }}

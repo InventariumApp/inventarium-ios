@@ -15,7 +15,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var barcodeFrameView:UIView?
     var barcodenum:String? = nil
-    var product:String? = nil
+    var product:[String] = []
 
     @IBOutlet weak var messageLabel: UILabel!
     
@@ -75,9 +75,8 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
     
-    func lookupBarcode(barcode:String, completion: @escaping (_ result : String?)->()) {
-        //let barcode = "0008817013220" // TODO: REMOVE!
-        let barcodeEndpoint: String = "http://159.203.166.121:8080/product_name?barcode=\(barcode)"
+    func lookupBarcode(barcode:String, completion: @escaping (_ result : [String?])->()) {
+        let barcodeEndpoint: String = "http://159.203.166.121:8080/product_data_for_barcode?barcode=\(barcode)"
         guard let url = URL(string: barcodeEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -110,7 +109,19 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                     return
                 }
                 
-                completion(productName)
+                guard let productImageURL = todo["image_url"] as? String else {
+                    print("Could not get product image url from JSON")
+                    return
+                }
+                
+                guard let productPrice = todo["price"] as? String else {
+                    print("Could not get product price from JSON")
+                    return
+                }
+                
+                let data = [productName, productPrice, productImageURL]
+                
+                completion(data)
                 
             } catch  {
                 print("error trying to convert data to JSON")
@@ -145,10 +156,10 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                 if barcodenum != metadataObj.stringValue {
                     self.messageLabel.text = "Barcode Detected"
                     lookupBarcode(barcode: metadataObj.stringValue) { product  in
-                        if let product = product {
+                        if product.count != 0 {
                             print(product)
                             DispatchQueue.main.async {
-                                self.product = product
+                                self.product = product as! [String]
                                 self.performSegue(withIdentifier: "barcodeToAddItemSegue", sender: self)
                             }
                         }
@@ -163,8 +174,9 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
         if segue.identifier == "barcodeToAddItemSegue" {
             let navigationViewController = (segue.destination as! UINavigationController)
             let newItemTableViewController = navigationViewController.topViewController as! NewItemTableViewController
-            print("%@$## \(self.product)")
-            newItemTableViewController.prefilledItemName = self.product!
+            newItemTableViewController.prefilledItemName = self.product[0]
+            newItemTableViewController.price = self.product[1]
+            newItemTableViewController.imageURL = self.product[2]
             navigationViewController.view.tintColor = UIColor.black
         }
     }

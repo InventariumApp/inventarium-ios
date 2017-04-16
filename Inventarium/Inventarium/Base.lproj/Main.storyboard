@@ -186,6 +186,27 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Expiration Date" id="UQI-5E-85u">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gXz-MP-VmO">
+                                        <rect key="frame" x="0.0" y="255.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gXz-MP-VmO" id="4vM-To-q2L">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="4/22/19" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="noT-ZQ-heZ">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="b9g-Ek-QWD" id="iSp-Jp-Rsb"/>
@@ -202,13 +223,14 @@
                         <barButtonItem key="rightBarButtonItem" title="Done" id="Xdu-8c-YZX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="y8h-ew-KGf" kind="unwind" identifier="NewItem" unwindAction="saveNewItemWithSegue:" id="B1F-4p-KJ6"/>
+                                <action selector="doneClicked:" destination="b9g-Ek-QWD" id="cMT-at-FQZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="countTextField" destination="D6K-7X-4O6" id="ZEt-ib-3Qz"/>
                         <outlet property="itemNameTextField" destination="ngW-KL-j7f" id="q2P-JU-E0F"/>
+                        <segue destination="y8h-ew-KGf" kind="unwind" identifier="NewItem" unwindAction="saveNewItemWithSegue:" id="J4D-g4-s6G"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gma-8K-JsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,9 +495,10 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="banana" translatesAutoresizingMaskIntoConstraints="NO" id="Aj8-h4-EnA">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aj8-h4-EnA">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="186"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.89798158409999995" green="0.88992786410000002" blue="0.90982103349999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <integer key="value" value="6"/>
@@ -514,8 +537,9 @@
                         <outlet property="insightsWebView" destination="VP1-8V-9vd" id="SyO-Bf-Ee3"/>
                         <outlet property="itemBackground" destination="Jov-vd-VwX" id="avr-Ph-Ob4"/>
                         <outlet property="itemCount" destination="DDN-QX-1bX" id="06x-dG-Lta"/>
+                        <outlet property="itemImageView" destination="Aj8-h4-EnA" id="7vl-Yc-gov"/>
                         <outlet property="itemName" destination="Xk8-B9-Tjw" id="fy9-9l-QhW"/>
-                        <outlet property="whiteBackground" destination="ZQ1-Q9-Vc9" id="Awe-Cj-Zk1"/>
+                        <outlet property="itemPrice" destination="ZQ1-Q9-Vc9" id="lMl-dZ-x0x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubM-bt-RgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -534,7 +558,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5iI-NO-y9e">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5iI-NO-y9e">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -789,7 +813,6 @@
         <image name="Barcode" width="25" height="25"/>
         <image name="Settings-100" width="22" height="22"/>
         <image name="Share Filled_44" width="22" height="22"/>
-        <image name="banana" width="400" height="400"/>
         <image name="bubbles" width="238" height="172"/>
     </resources>
     <inferredMetricsTieBreakers>
