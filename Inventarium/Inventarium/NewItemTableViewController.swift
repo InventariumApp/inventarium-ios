@@ -24,7 +24,6 @@ class NewItemTableViewController: UITableViewController {
         if let _ = self.price, let _ = imageURL {
             self.performSegue(withIdentifier: "NewItem", sender: self)
         } else {
-            print("blahhasss")
             lookupItemName() { product  in
                 if product.count != 0 {
                     print(product)

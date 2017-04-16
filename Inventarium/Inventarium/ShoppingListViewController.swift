@@ -30,6 +30,10 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 150
+
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         //HeroDebugPlugin.isEnabled = true
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
