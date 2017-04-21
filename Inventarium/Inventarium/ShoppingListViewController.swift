@@ -210,6 +210,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         let ref = FIRDatabase.database().reference(withPath: userPath)
         let itemRef = ref.child(byAppendingPath: "item-history")
         let thisItemRef = itemRef.child(byAppendingPath: String(item.name).lowercased())
+        thisItemRef.child("category").setValue(item.category)
         let timeRef = thisItemRef.childByAutoId
         timeRef().setValue(FIRServerValue.timestamp())
     }

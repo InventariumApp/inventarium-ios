@@ -76,7 +76,7 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         let groceryItem = items[indexPath.row]
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
         
-        cell.textLabel!.text = groceryItem.name
+        cell.textLabel!.text = groceryItem.name.capitalized
         cell.detailTextLabel!.text = String(groceryItem.count)
         cell.delegate = self //optional
         
