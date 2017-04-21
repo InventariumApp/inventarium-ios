@@ -14,6 +14,10 @@ class InsightsViewController: UIViewController {
     
     @IBOutlet weak var insightsSegmentedControl: UISegmentedControl!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func graphChanged(_ sender: UISegmentedControl) {
         switch insightsSegmentedControl.selectedSegmentIndex {
         case 0:

@@ -95,14 +95,14 @@
                     <navigationItem key="navigationItem" id="ikZ-aS-RJB">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="UFr-vl-dRK"/>
-                        <barButtonItem key="leftBarButtonItem" image="Settings-100" id="HO8-8i-Qnh">
+                        <barButtonItem key="leftBarButtonItem" image="Line Chart" id="HO8-8i-Qnh">
                             <color key="tintColor" red="0.60927516222000122" green="0.32776042819023132" blue="0.72558271884918213" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="A1H-cy-dn2" kind="presentation" id="FLi-1v-U8p"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="1" id="Xkd-Ce-Ucx">
-                            <rect key="frame" x="57.5" y="7" width="260" height="30"/>
+                            <rect key="frame" x="60" y="7" width="260" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Shopping List"/>
@@ -817,6 +817,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="backButtonPressed:" destination="A1H-cy-dn2" eventType="touchUpInside" id="3QR-0C-R1S"/>
                                     <action selector="backButtonPressed:" destination="EGj-Yu-Inc" eventType="touchUpInside" id="Bqx-XC-WTS"/>
                                 </connections>
                             </button>
@@ -869,7 +870,7 @@
     </scenes>
     <resources>
         <image name="Barcode" width="25" height="25"/>
-        <image name="Settings-100" width="22" height="22"/>
+        <image name="Line Chart" width="25" height="25"/>
         <image name="Share Filled_44" width="22" height="22"/>
         <image name="bubbles" width="238" height="172"/>
     </resources>
