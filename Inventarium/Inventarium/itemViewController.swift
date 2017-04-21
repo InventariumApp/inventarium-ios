@@ -37,7 +37,7 @@ class itemViewController: UIViewController, SFSafariViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemName.text = itemNameString
+        itemName.text = itemNameString?.capitalized
         itemCount.text = itemCountString
         if let price = item?.price {
             itemPrice.text = price

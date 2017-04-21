@@ -91,7 +91,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         let groceryItem = items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
         
-        cell.textLabel!.text = groceryItem.name
+        cell.textLabel!.text = groceryItem.name.capitalized
         cell.detailTextLabel!.text = String(groceryItem.count)
         cell.delegate = self //optional
         //configure left buttons
