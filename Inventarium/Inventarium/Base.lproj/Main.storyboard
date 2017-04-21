@@ -95,7 +95,7 @@
                     <navigationItem key="navigationItem" id="ikZ-aS-RJB">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="UFr-vl-dRK"/>
-                        <barButtonItem key="leftBarButtonItem" image="Line Chart" id="HO8-8i-Qnh">
+                        <barButtonItem key="leftBarButtonItem" image="Doughnut Chart Filled_44" id="HO8-8i-Qnh">
                             <color key="tintColor" red="0.60927516222000122" green="0.32776042819023132" blue="0.72558271884918213" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="A1H-cy-dn2" kind="presentation" id="FLi-1v-U8p"/>
@@ -870,7 +870,7 @@
     </scenes>
     <resources>
         <image name="Barcode" width="25" height="25"/>
-        <image name="Line Chart" width="25" height="25"/>
+        <image name="Doughnut Chart Filled_44" width="25" height="25"/>
         <image name="Share Filled_44" width="22" height="22"/>
         <image name="bubbles" width="238" height="172"/>
     </resources>
