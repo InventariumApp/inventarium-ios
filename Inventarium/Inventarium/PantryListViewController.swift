@@ -20,6 +20,9 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tableView.estimatedRowHeight = 150
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
         // Set delegate to self
@@ -78,9 +81,9 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         cell.delegate = self //optional
         
         //configure left buttons
-        cell.leftButtons = [MGSwipeButton(title: "Move To Shopping List", backgroundColor: .purple, callback: {
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Trash.png"), backgroundColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
-            self.onMoveToShoppingClicked(indexPath)
+            self.onDeleteClicked(indexPath)
             return true
         })]
         
@@ -90,9 +93,9 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
         cell.leftExpansion.threshold = 1.5
         
         //configure right buttons
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named:"Cart.png"),  backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
-            self.onDeleteClicked(indexPath)
+            self.onMoveToShoppingClicked(indexPath)
             return true
         })]
         

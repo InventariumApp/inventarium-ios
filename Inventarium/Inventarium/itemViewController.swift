@@ -44,8 +44,8 @@ class itemViewController: UIViewController, SFSafariViewControllerDelegate {
         }
         
         self.navigationController?.navigationBar.isHidden = true;    
-        
-        let url = URL(string: "http://159.203.166.121:8080/graphs")
+        insightsWebView.scrollView.isScrollEnabled = false
+        let url = URL(string: "https://inventarium.me/graphs/top_categories/iphoneaccount%40gmail%2ccom")
         insightsWebView.loadRequest(URLRequest(url: url!))
         if let url = item?.imageURL {
             itemImageView.imageFromServerURL(urlString: url)

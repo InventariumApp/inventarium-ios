@@ -18,6 +18,7 @@ class NewItemTableViewController: UITableViewController {
     var item:GroceryItem?
     var prefilledItemName:String? = nil
     var price:String? = nil
+    var category:String? = nil
     var imageURL:String? = nil
     
     @IBAction func doneClicked(_ sender: UIBarButtonItem) {
@@ -28,6 +29,7 @@ class NewItemTableViewController: UITableViewController {
                 if product.count != 0 {
                     print(product)
                     DispatchQueue.main.async {
+                        self.category = product[3]
                         self.imageURL = product[2]
                         self.price = product[1]
                         self.performSegue(withIdentifier: "NewItem", sender: self)
@@ -65,7 +67,7 @@ class NewItemTableViewController: UITableViewController {
     
     func lookupItemName(completion: @escaping (_ result : [String?])->()) {
         let itemNameEncoded = itemNameTextField.text!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let itemEndpoint: String = "http://159.203.166.121:8080/product_data_for_name/\(itemNameEncoded)"
+        let itemEndpoint: String = "https://inventarium.me/product_data_for_name/\(itemNameEncoded)"
         guard let url = URL(string: itemEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -108,7 +110,12 @@ class NewItemTableViewController: UITableViewController {
                     return
                 }
                 
-                let data = [productName, productPrice, productImageURL]
+                guard let productCategory = todo["category"] as? String else {
+                    print("Could not get product category from JSON")
+                    return
+                }
+                
+                let data = [productName, productPrice, productImageURL, productCategory]
                 
                 completion(data)
                 
@@ -124,7 +131,7 @@ class NewItemTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NewItem" {
             print("Blahoo")
-            item = GroceryItem(name: itemNameTextField.text!, addedByUser: "mike", count: Int(countTextField.text!)!, price: price!, imageURL: imageURL!)
+            item = GroceryItem(name: itemNameTextField.text!, addedByUser: "mike", count: Int(countTextField.text!)!, price: price!, imageURL: imageURL!, category: category!)
         }
     }
 }

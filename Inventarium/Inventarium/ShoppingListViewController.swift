@@ -30,10 +30,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 150
-
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
         //HeroDebugPlugin.isEnabled = true
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
@@ -99,7 +95,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         cell.detailTextLabel!.text = String(groceryItem.count)
         cell.delegate = self //optional
         //configure left buttons
-        cell.leftButtons = [MGSwipeButton(title: "Move To Pantry", backgroundColor: .purple, callback: {
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named: "Home.png"), backgroundColor: #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             self.onMoveToPantryClicked(indexPath)
             return true
@@ -111,7 +107,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         cell.leftExpansion.threshold = 1.5
         
         //configure right buttons
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red, callback: {
+        cell.rightButtons = [MGSwipeButton(title: "", icon: UIImage(named: "Trash.png"), backgroundColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             self.onDeleteClicked(indexPath)
             return true

@@ -22,7 +22,7 @@ class ShareViaSMSViewController: UIViewController, UITextFieldDelegate {
     var oldNumber:String?
     
     @IBAction func shareClicked(_ sender: UIButton) {
-        var request = URLRequest(url: URL(string: "http://159.203.166.121:8080/share_list")!)
+        var request = URLRequest(url: URL(string: "http://159.203.166.121/share_list")!)
         request.httpMethod = "POST"
         let userEmail = FIRAuth.auth()!.currentUser!.email!
         let cleanUserEmail = userEmail.replacingOccurrences(of: ".", with: ",", options: .literal, range: nil)

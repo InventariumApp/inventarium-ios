@@ -17,15 +17,17 @@ struct GroceryItem {
     let price: String
     let imageURL: String
     let ref: FIRDatabaseReference?
+    let category: String
     var count: Int
     
-    init(name: String, addedByUser: String, count: Int, price: String, imageURL: String, key: String = "") {
+    init(name: String, addedByUser: String, count: Int, price: String, imageURL: String, category: String, key: String = "") {
         self.key = key
         self.count = count
         self.name = name
         self.addedByUser = addedByUser
         self.price = price
         self.imageURL = imageURL
+        self.category = category
         self.ref = nil
     }
     
@@ -37,6 +39,7 @@ struct GroceryItem {
         price = snapshotValue["price"] as! String
         imageURL = snapshotValue["imageURL"] as! String
         addedByUser = snapshotValue["addedByUser"] as! String
+        category = snapshotValue["category"] as! String
         ref = snapshot.ref
     }
     
@@ -47,6 +50,7 @@ struct GroceryItem {
             "price": price,
             "imageURL": imageURL,
             "addedByUser": addedByUser,
+            "category" : category,
         ]
     }
     

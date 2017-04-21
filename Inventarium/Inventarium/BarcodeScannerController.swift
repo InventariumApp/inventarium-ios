@@ -76,7 +76,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     }
     
     func lookupBarcode(barcode:String, completion: @escaping (_ result : [String?])->()) {
-        let barcodeEndpoint: String = "http://159.203.166.121:8080/product_data_for_barcode?barcode=\(barcode)"
+        let barcodeEndpoint: String = "https://inventarium.me/product_data_for_barcode?barcode=\(barcode)"
         guard let url = URL(string: barcodeEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -119,7 +119,12 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
                     return
                 }
                 
-                let data = [productName, productPrice, productImageURL]
+                guard let productCategory = todo["category"] as? String else {
+                    print("Could not get product category from JSON")
+                    return
+                }
+                
+                let data = [productName, productPrice, productImageURL, productCategory]
                 
                 completion(data)
                 
@@ -177,6 +182,7 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
             newItemTableViewController.prefilledItemName = self.product[0]
             newItemTableViewController.price = self.product[1]
             newItemTableViewController.imageURL = self.product[2]
+            newItemTableViewController.category = self.product[3]
             navigationViewController.view.tintColor = UIColor.black
         }
     }

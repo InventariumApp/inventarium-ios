@@ -106,7 +106,8 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
         //let param = ["image_path":img_path]
         var escaped_path = img_path.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         
-        let imageEndpoint = "http://159.203.166.121:8080/image_data/\(escaped_path)"
+        let imageEndpoint = "https://inventarium.me/image_data/\(escaped_path)"
+        print(imageEndpoint)
         
         guard let url = URL(string: imageEndpoint) else {
             print("Error: cannot create URL")
@@ -156,7 +157,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     
     override func viewDidLoad() {
-        // If the user changed, set user var to the new user
+        // If the user changed, set user var to the new user and setup the lists
         FIRAuth.auth()!.addStateDidChangeListener { auth, user in
             guard let user = user else { return }
             self.user = User(authData: user)
@@ -235,7 +236,7 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBAction func saveNewItem(segue:UIStoryboardSegue) {
         if let newItemTableviewController = segue.source as? NewItemTableViewController {
             if let item = newItemTableviewController.item {
-                let newItem = GroceryItem(name: item.name, addedByUser: self.user.email, count: item.count, price: item.price, imageURL: item.imageURL)
+                let newItem = GroceryItem(name: item.name, addedByUser: self.user.email, count: item.count, price: item.price, imageURL: item.imageURL, category: item.category)
                 
                 if (self.currentViewController == self.shoppingListViewController) {
                     self.shoppingListViewController!.addItemToList(list: "shopping", item: newItem)

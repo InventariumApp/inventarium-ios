@@ -17,7 +17,8 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6078431373, green: 0.3294117647, blue: 0.7254901961, alpha: 1)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

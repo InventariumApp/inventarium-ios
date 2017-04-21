@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		061A5F23C24030CA69EEA9ED /* Pods_Inventarium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */; };
 		4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05E3191E5172C2009CEF5D /* TwoViewController.swift */; };
+		4C10B2A91EA98ED20031E480 /* InsightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B2A81EA98ED20031E480 /* InsightsViewController.swift */; };
 		4C2B3D6B1E91E4040072A51D /* ShareViaSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */; };
+		4C4242A41EA9B4A6007D8C9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */; };
+		4C4242A51EA9B4A6007D8C9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */; };
+		4C4242A61EA9B4CD007D8C9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */; };
 		4C494D931E81B16800F4DE7B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C494D921E81B16800F4DE7B /* CameraViewController.swift */; };
 		4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C50A0661E4E2010003C22A7 /* LoginViewController.swift */; };
 		4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */; };
 		4C5A92231E527867007F9BF6 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A92221E527867007F9BF6 /* PantryListViewController.swift */; };
-		4C69C71D1E8330F9004920E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C69C71C1E8330F9004920E9 /* GoogleService-Info.plist */; };
 		4C6FC0E11E611506008A9705 /* NewItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC0E01E611506008A9705 /* NewItemTableViewController.swift */; };
 		4C72A79B1E8195FF0071D770 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72A79A1E8195FF0071D770 /* SettingsViewController.swift */; };
 		4C8257951E68CBB7005D119E /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8257941E68CBB7005D119E /* BarcodeScannerController.swift */; };
@@ -55,7 +58,9 @@
 		16907D52D7190EAA9AC6CE16 /* Pods-InventariumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumUITests/Pods-InventariumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C89B77C690764F67873C9C5 /* Pods-InventariumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumTests/Pods-InventariumTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C05E3191E5172C2009CEF5D /* TwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
+		4C10B2A81EA98ED20031E480 /* InsightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsightsViewController.swift; sourceTree = "<group>"; };
 		4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViaSMSViewController.swift; sourceTree = "<group>"; };
+		4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C494D921E81B16800F4DE7B /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ../CameraViewController.swift; sourceTree = "<group>"; };
 		4C50A0661E4E2010003C22A7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C50A0681E4E2AE0003C22A7 /* Inventarium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventarium.entitlements; sourceTree = "<group>"; };
@@ -136,6 +141,7 @@
 		4C93DAB51E4CFDF900024E9E = {
 			isa = PBXGroup;
 			children = (
+				4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */,
 				4C93DAC01E4CFDFA00024E9E /* Inventarium */,
 				4C93DAD51E4CFDFA00024E9E /* InventariumTests */,
 				4C93DAE01E4CFDFA00024E9E /* InventariumUITests */,
@@ -211,6 +217,7 @@
 				4CB77D441E842ECF00ADE80A /* WebViewController.swift */,
 				4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */,
 				4CF9E81F1E9E8448001D8C2E /* itemViewController.swift */,
+				4C10B2A81EA98ED20031E480 /* InsightsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -374,8 +381,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4242A61EA9B4CD007D8C9A /* GoogleService-Info.plist in Resources */,
 				4C93DACC1E4CFDFA00024E9E /* LaunchScreen.storyboard in Resources */,
-				4C69C71D1E8330F9004920E9 /* GoogleService-Info.plist in Resources */,
 				4C93DAC91E4CFDFA00024E9E /* Assets.xcassets in Resources */,
 				4C93DAC71E4CFDFA00024E9E /* Main.storyboard in Resources */,
 			);
@@ -385,6 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4242A41EA9B4A6007D8C9A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4242A51EA9B4A6007D8C9A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +558,7 @@
 				4C93DAF11E4D0C4C00024E9E /* GroceryItem.swift in Sources */,
 				4C494D931E81B16800F4DE7B /* CameraViewController.swift in Sources */,
 				4C6FC0E11E611506008A9705 /* NewItemTableViewController.swift in Sources */,
+				4C10B2A91EA98ED20031E480 /* InsightsViewController.swift in Sources */,
 				4CB77D411E837DED00ADE80A /* CardView.swift in Sources */,
 				4C5A92211E527844007F9BF6 /* ShoppingListViewController.swift in Sources */,
 				4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */,
@@ -709,11 +719,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Inventarium/Inventarium.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q87CL5C7C4;
 				INFOPLIST_FILE = Inventarium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.inventariumapp.Inventarium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -725,11 +737,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Inventarium/Inventarium.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = Q87CL5C7C4;
 				INFOPLIST_FILE = Inventarium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.inventariumapp.Inventarium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
