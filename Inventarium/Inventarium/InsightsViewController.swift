@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+ * InightsViewController handles the insights page (showing graphs regarding the user's purchases)
+ */
 class InsightsViewController: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
@@ -18,6 +21,7 @@ class InsightsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // Change graph when user clicks segmented controller
     @IBAction func graphChanged(_ sender: UISegmentedControl) {
         switch insightsSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -48,16 +52,4 @@ class InsightsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

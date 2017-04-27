@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var imagePicker: UIImagePickerController!

@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 import MGSwipeTableCell
 
+
+/*
+ * PantryListViewController presents the items in a users grocery list
+ */
 class PantryListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource {
     var items: [GroceryItem] = []
     var currentUser:User!
@@ -20,8 +24,6 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.tableView.estimatedRowHeight = 150
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.register(MGSwipeTableCell.self, forCellReuseIdentifier: "cell")
         
@@ -50,13 +52,6 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
             self.items = newItems
             self.tableView.reloadData()
         })
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,7 +61,6 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     
     
     // MARK: UITableView Delegate methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -74,7 +68,7 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ItemCell"
         let groceryItem = items[indexPath.row]
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
         
         cell.textLabel!.text = groceryItem.name.capitalized
         cell.detailTextLabel!.text = String(groceryItem.count)
@@ -122,7 +116,6 @@ class PantryListViewController: GroceryListTableViewController, MGSwipeTableCell
     
     func onDeleteClicked(_ index: IndexPath) {
         // Get the item from the items list
-        //var x =  self.tableView.indexPath(for: sender)
         let groceryItem = items[index.row]
         // Remove the item from firebase
         groceryItem.ref?.removeValue()

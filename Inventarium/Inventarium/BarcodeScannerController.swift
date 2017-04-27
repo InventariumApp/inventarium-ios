@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 
+/*
+ * BarcodeScannerController handles the scanning of a product barcodes
+ */
 class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     var captureSession:AVCaptureSession?
@@ -23,16 +26,16 @@ class BarcodeScannerController: UIViewController, AVCaptureMetadataOutputObjects
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Get instance of AVCaptureDevice class to initialize a device object
+        // Get instance of AVCaptureDevice class to initialize device
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
+            // Get an instance of the AVCaptureDeviceInput class using the previous device
             let input = try AVCaptureDeviceInput(device: captureDevice)
             
-            // Initialize the captureSession object.
+            // Initialize the captureSession
             captureSession = AVCaptureSession()
             
-            // Set the input device on the capture session.
+            // Set the input device on the capture session
             captureSession?.addInput(input)
             
             let captureMetadataOutput = AVCaptureMetadataOutput()

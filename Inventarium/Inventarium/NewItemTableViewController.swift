@@ -8,8 +8,9 @@
 
 import UIKit
 
-//https://www.raywenderlich.com/113772/uisearchcontroller-tutorial
-//http://www.matthewhsingleton.com/blog/2016/5/26/predictive-text-table-view-swift-version-of-ray-wenderlich
+/*
+ * NewItemTableViewController handles the page where an item is created. It takes a name and a quantity.
+ */
 class NewItemTableViewController: UITableViewController {
 
     @IBOutlet weak var countTextField: UITextField!
@@ -45,11 +46,6 @@ class NewItemTableViewController: UITableViewController {
             itemNameTextField.text = prefilledItemName
         }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {

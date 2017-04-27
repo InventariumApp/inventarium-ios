@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 import PhoneNumberKit
 
+/*
+ * ShareViaSMSViewController handles the sharing page where users can input a phone number and give them access to the chatbot and list
+ */
 class ShareViaSMSViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
@@ -61,42 +64,7 @@ class ShareViaSMSViewController: UIViewController, UITextFieldDelegate {
         } else {
             shareButton.isEnabled = false
         }
-//        if (textField.text?.range(of: "*") == nil) && (textField.text?.range(of: "#") == nil) && (textField.text?.characters.count == 10){
-//            shareButton.isEnabled = true
-//            reformatValidNumber()
-//        } else {
-//            if (textField.text?.range(of: "(") != nil && (textField.text?.characters.count == 13)) {
-//                shareButton.isEnabled = true
-//            } else {
-//                shareButton.isEnabled = false
-//            }
-//        }
     }
-//
-//    
-//    func reformatValidNumber() {
-//        oldNumber = textField.text
-//        let leftParenthIndex = (textField.text?.startIndex)!
-//        let rightParenthIndex = (textField.text?.characters.index((textField.text?.startIndex)!, offsetBy: 4))!
-//        let dashIndex = (textField.text?.characters.index((textField.text?.startIndex)!, offsetBy: 8))!
-//        
-//        textField.text?.insert("(", at: leftParenthIndex)
-//        textField.text?.insert(")", at: rightParenthIndex)
-//        textField.text?.insert("-", at: dashIndex)
-//    }
-
-//    func reformatInvalidNumber(_ digit: String) {
-//        if let number = oldNumber {
-//            if (digit == "delete"){
-//                let index = number.characters.index((number.startIndex), offsetBy: (number.characters.count) - 1)
-//                let newNumber = number.substring(to:index)
-//                textField.text = newNumber
-//            } else {
-//                textField.text = number + digit
-//                oldNumber = nil
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,12 +81,6 @@ class ShareViaSMSViewController: UIViewController, UITextFieldDelegate {
     }
     
     func editingChanged(_ textField: UITextField) {
-//        if textField.text?.characters.count == 1 {
-//            if textField.text?.characters.first == " " {
-//                textField.text = ""
-//                return
-//            }
-//        }
         validateNumber()
     }
     
@@ -147,16 +109,4 @@ class ShareViaSMSViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

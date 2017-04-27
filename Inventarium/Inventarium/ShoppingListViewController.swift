@@ -12,6 +12,9 @@ import MGSwipeTableCell
 import SafariServices
 import Hero
 
+/*
+ * ShoppingListViewController presents the items in a users grocery list
+ */
 class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCellDelegate, UITableViewDelegate, UITableViewDataSource {
     var items: [GroceryItem] = []
     var currentUser:User!
@@ -24,8 +27,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     var attachmentBehavior : UIAttachmentBehavior!
     var snapBehavior : UISnapBehavior!
 
-    //let ref = FIRDatabase.database().reference(withPath: "shopping-items")
-    // NEED AN INIT THAT PROVIDES USER AND THEN ADDS EMAIL TO THE REF
     var ref:FIRDatabaseReference!
 
     override func viewDidLoad() {
@@ -147,13 +148,6 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
         
         selectedGroceryItem = groceryItem
         selectedCell = cell
-//        infoCardItemName = groceryItem.name
-//        infoCardItemNameLabel.text = infoCardItemName
-//        if (infoCard != nil) {
-//            dismissCard()
-//        }
-//        makeInfoCardAppear()
-//        print(groceryItem.getAmazonLink())
         
         cell.heroID = "itemBackground"
         cell.textLabel?.heroID = "itemName"
@@ -166,15 +160,7 @@ class ShoppingListViewController: GroceryListTableViewController, MGSwipeTableCe
     }
     
     func loadHeroView(){
-        //GARBAGE
-        //        let vc = itemViewController()
-        //
-        //DispatchQueue.main.async {
-            //self.hero_replaceViewController(with: itemViewController())
-
-            self.performSegue(withIdentifier: "showItemController", sender: self)
-        //}
-    
+        self.performSegue(withIdentifier: "showItemController", sender: self)    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
