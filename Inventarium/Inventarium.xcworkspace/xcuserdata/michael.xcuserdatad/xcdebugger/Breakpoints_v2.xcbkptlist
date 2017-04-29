@@ -346,8 +346,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "cancelClicked(_:)"
-            landmarkType = "7">
+            landmarkName = "ShareViaSMSViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -361,9 +361,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "keyboardWillShow(_:)"
-            landmarkType = "7">
+            endingLineNumber = "130">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -377,9 +375,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "keyboardWillShow(_:)"
-            landmarkType = "7">
+            endingLineNumber = "131">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -534,14 +530,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "NewItemTableViewController"
-            landmarkType = "3">
+            landmarkName = "lookupItemName(completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Inventarium/NewItemTableViewController.swift"
@@ -600,6 +596,38 @@
             endingLineNumber = "66"
             landmarkName = "signUpDidTouch(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inventarium.LoginViewController.(signUpDidTouch (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "Inventarium"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michael/hacks/senior-project/inventarium-ios/Inventarium/Inventarium/LoginViewController.swift"
+                  timestampString = "515103754.797354"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "996">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inventarium.LoginViewController.(signUpDidTouch (Swift.AnyObject) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Inventarium"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michael/hacks/senior-project/inventarium-ios/Inventarium/Inventarium/LoginViewController.swift"
+                  timestampString = "515103754.798725"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
