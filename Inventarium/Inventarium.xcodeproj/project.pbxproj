@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		061A5F23C24030CA69EEA9ED /* Pods_Inventarium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B49A85F1A6DC1E75A7494F1 /* Pods_Inventarium.framework */; };
-		4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05E3191E5172C2009CEF5D /* TwoViewController.swift */; };
+		4C05E31A1E5172C2009CEF5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05E3191E5172C2009CEF5D /* MainViewController.swift */; };
 		4C10B2A91EA98ED20031E480 /* InsightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C10B2A81EA98ED20031E480 /* InsightsViewController.swift */; };
 		4C2B3D6B1E91E4040072A51D /* ShareViaSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */; };
 		4C4242A41EA9B4A6007D8C9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */; };
@@ -56,7 +56,7 @@
 /* Begin PBXFileReference section */
 		16907D52D7190EAA9AC6CE16 /* Pods-InventariumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumUITests/Pods-InventariumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C89B77C690764F67873C9C5 /* Pods-InventariumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventariumTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InventariumTests/Pods-InventariumTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4C05E3191E5172C2009CEF5D /* TwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoViewController.swift; sourceTree = "<group>"; };
+		4C05E3191E5172C2009CEF5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4C10B2A81EA98ED20031E480 /* InsightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsightsViewController.swift; sourceTree = "<group>"; };
 		4C2B3D6A1E91E4040072A51D /* ShareViaSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViaSMSViewController.swift; sourceTree = "<group>"; };
 		4C4242A21EA9B4A6007D8C9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				4C494D921E81B16800F4DE7B /* CameraViewController.swift */,
 				4C6FC0E01E611506008A9705 /* NewItemTableViewController.swift */,
-				4C05E3191E5172C2009CEF5D /* TwoViewController.swift */,
+				4C05E3191E5172C2009CEF5D /* MainViewController.swift */,
 				4C50A0661E4E2010003C22A7 /* LoginViewController.swift */,
 				4C93DAC31E4CFDFA00024E9E /* GroceryListTableViewController.swift */,
 				4C5A92201E527844007F9BF6 /* ShoppingListViewController.swift */,
@@ -561,7 +561,7 @@
 				4C50A0671E4E2010003C22A7 /* LoginViewController.swift in Sources */,
 				4C8257951E68CBB7005D119E /* BarcodeScannerController.swift in Sources */,
 				4C93DAC21E4CFDFA00024E9E /* AppDelegate.swift in Sources */,
-				4C05E31A1E5172C2009CEF5D /* TwoViewController.swift in Sources */,
+				4C05E31A1E5172C2009CEF5D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

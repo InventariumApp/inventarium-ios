@@ -1,5 +1,5 @@
 //
-//  TwoViewController.swift
+//  MainViewController
 //  Inventarium
 //
 //  Created by Michael Rosenfield on 2/12/17.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class TwoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class MainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var user: User!
     var product:String? = nil
 
@@ -256,23 +256,5 @@ class TwoViewController: UIViewController, UINavigationControllerDelegate, UIIma
             navigationViewController.view.tintColor = UIColor.black
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
- */
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        if (segue.identifier == "segueTest") {
-//            //Checking identifier is crucial as there might be multiple
-//            // segues attached to same view
-//            var detailVC = segue!.destinationViewController as DetailViewController;
-//            detailVC.toPass = textField.text
-//        }
-//    }
- 
 
 }
